@@ -1,0 +1,18 @@
+{
+  "name": "muvee",
+  "version": "1.0.0",
+  "description": "A movie tracking app",
+  "main": "index.js",
+  "type": "module",
+  "private": true,
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rajshekhar26/muvee.git"
+  },
+  "author": "Raj Shekhar <rjshekhar.official@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rajshekhar26/muvee/issues"
+  }
+}

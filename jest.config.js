@@ -1,3 +1,7 @@
 export default {
-  testEnvironment: 'node'
+  testEnvironment: 'node',
+  testPathIgnorePatterns: ['client/'],
+  modulePathIgnorePatterns: ['client/'],
+  watchPathIgnorePatterns: ['client/'],
+  coveragePathIgnorePatterns: ['client/']
 }

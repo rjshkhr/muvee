@@ -7,7 +7,11 @@
   "private": true,
   "scripts": {
     "start": "node server",
-    "dev": "nodemon server"
+    "dev": "nodemon server",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "repository": {
     "type": "git",
@@ -19,7 +23,10 @@
     "url": "https://github.com/rajshekhar26/muvee/issues"
   },
   "devDependencies": {
-    "nodemon": "^2.0.13"
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "nodemon": "^2.0.13",
+    "prettier": "^2.4.1"
   },
   "dependencies": {
     "dotenv": "^10.0.0",

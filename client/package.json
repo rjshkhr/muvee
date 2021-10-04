@@ -3,7 +3,11 @@
   "scripts": {
     "start": "NODE_ENV=development webpack serve",
     "build": "NODE_ENV=production webpack",
-    "build:dev": "NODE_ENV=development webpack"
+    "build:dev": "NODE_ENV=development webpack",
+    "lint": "eslint './src/**/*.{js,jsx,json}'",
+    "lint:fix": "eslint --fix './src/**/*.{js,jsx,json}'",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
@@ -11,7 +15,12 @@
     "@babel/preset-react": "^7.14.5",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.1",
     "babel-loader": "^8.2.2",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "html-webpack-plugin": "^5.3.2",
+    "prettier": "^2.4.1",
     "react-refresh": "^0.10.0",
     "webpack": "^5.56.1",
     "webpack-cli": "^4.8.0",

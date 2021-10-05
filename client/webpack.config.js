@@ -22,7 +22,10 @@ const config = {
       ? {
           open: true,
           port: 3000,
-          hot: true
+          hot: true,
+          proxy: {
+            '/api': 'http://localhost:3001'
+          }
         }
       : {},
   plugins: [

@@ -1,4 +1,5 @@
 node_modules/
 build/
 client/cypress/videos
+client/cypress/screenshots
 .env

@@ -28,7 +28,6 @@ jobs:
           npm ci
           npm run lint
           npm run format:check
-          npm test
 
       - name: client
         run: |
@@ -36,13 +35,3 @@ jobs:
           npm ci
           npm run lint
           npm run format:check
-          npm test
-
-      - name: e2e
-        if: github.event_name == 'push'
-        uses: cypress-io/github-action@v2
-        with:
-          command: npm run test:e2e
-          start: npm start
-          wait-on: http://localhost:3000, http://localhost:3001
-          working-directory: client

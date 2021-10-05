@@ -15,7 +15,6 @@
     "test": "NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules jest",
     "start:test": "NODE_ENV=test node server",
     "heroku-prebuild": "cd client && npm install --dev && npm run build"
-
   },
   "repository": {
     "type": "git",

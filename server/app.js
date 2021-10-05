@@ -26,6 +26,10 @@ const __dirname = dirname(__filename)
 app.use(helmet())
 app.use(express.static(path.join(__dirname, '../client/build')))
 
+app.get('/health', (_req, res) => {
+  res.send('ok')
+})
+
 app.get('/api/message', (_req, res) => {
   res.json({ message: 'Hello World' })
 })

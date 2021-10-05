@@ -10,8 +10,8 @@ const App = () => {
       try {
         const res = await fetch('/api/message')
         const data = await res.json()
-          setData(data)
-          setLoading(false)
+        setData(data)
+        setLoading(false)
       } catch (err) {
         setError(true)
         console.log(err.message)

@@ -5,14 +5,14 @@ import app from '../app'
 
 const api = supertest(app)
 
-describe('GET /', () => {
+describe('GET /api/message', () => {
   it('responds with hello world message', async () => {
     const response = await api
-      .get('/')
+      .get('/api/message')
       .expect(200)
       .expect('Content-Type', /json/)
 
-    expect(response.body.message).toBe('Hello World!')
+    expect(response.body.message).toBe('Hello World')
   })
 })
 

@@ -17,8 +17,8 @@ mongoose
     logger.error('Error connecting to MongoDB:', err.message)
   })
 
-app.get('/', (_req, res) => {
-  res.json({ message: 'Hello World!' })
+app.get('/api/message', (_req, res) => {
+  res.json({ message: 'Hello World' })
 })
 
 export default app

@@ -33,5 +33,17 @@ jobs:
         run: |
           cd client
           npm ci
+          npm run build
           npm run lint
           npm run format:check
+
+      - name: deploy
+        if: github.event_name == 'push'
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: 'muvee'
+          heroku_email: 'rjshekhar.official@gmail.com'
+          healthcheck: 'https://muvee.herokuapp.com/health'
+          checkstring: 'ok'
+          rollbackonhealthcheckfailed: true

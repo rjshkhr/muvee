@@ -10,10 +10,8 @@ const App = () => {
       try {
         const res = await fetch('/api/message')
         const data = await res.json()
-        setTimeout(() => {
           setData(data)
           setLoading(false)
-        }, 5000)
       } catch (err) {
         setError(true)
         console.log(err.message)

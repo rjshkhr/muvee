@@ -1,4 +1,5 @@
 import express from 'express'
+import helmet from 'helmet'
 import mongoose from 'mongoose'
 import path, { dirname } from 'path'
 import { fileURLToPath } from 'url'
@@ -22,6 +23,7 @@ mongoose
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
+app.use(helmet())
 app.use(express.static(path.join(__dirname, '../client/build')))
 
 app.get('/api/message', (_req, res) => {

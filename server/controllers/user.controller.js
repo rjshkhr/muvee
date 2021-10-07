@@ -1,4 +1,5 @@
 import userService from '../services/user.service.js'
+import { hashPassword } from '../utils/encrypt-password.js'
 
 const getAll = async (_req, res, next) => {
   try {
@@ -21,7 +22,32 @@ const getOne = async (req, res, next) => {
   }
 }
 
+const register = async (req, res, next) => {
+  const { name, email, password } = req.body
+
+  try {
+    const existingUser = await userService.getUserByQuery({ email })
+
+    if (existingUser) {
+      return res.status(409).json({ error: 'email already in use' })
+    }
+
+    const passwordHash = await hashPassword(password)
+
+    const createdUser = await userService.createUser({
+      name,
+      email,
+      passwordHash
+    })
+
+    res.status(201).json(createdUser)
+  } catch (err) {
+    next(err)
+  }
+}
+
 export default {
   getAll,
-  getOne
+  getOne,
+  register
 }

@@ -59,6 +59,69 @@ describe('When initially there are some users', () => {
       await api.get('/api/users/abc').expect(400).expect('Content-Type', /json/)
     })
   })
+
+  describe('POST /api/users/register', () => {
+    it('creates new user', async () => {
+      const newUser = {
+        name: 'test1000',
+        email: 'test1000@email.com',
+        password: 'test1000'
+      }
+
+      const res = await api
+        .post('/api/users/register')
+        .send(newUser)
+        .expect(201)
+        .expect('Content-Type', /json/)
+
+      expect(res.body.passwordHash).not.toEqual(newUser.password)
+
+      const updatedUsers = await helper.usersInDb()
+      expect(updatedUsers).toHaveLength(helper.initialUsers.length + 1)
+
+      const emails = updatedUsers.map(user => user.email)
+      expect(emails).toContain(newUser.email)
+    })
+
+    it('fails if email is already taken', async () => {
+      await api
+        .post(`/api/users/register`)
+        .send({
+          name: 'test1000',
+          email: helper.initialUsers[0].email,
+          password: 'test1000'
+        })
+        .expect(409)
+    })
+
+    it('fails if name, email or password is missing', async () => {
+      await api
+        .post('/api/users/register')
+        .send({ name: 'test1000', email: 'test1000@email.com' })
+        .expect(422)
+
+      await api
+        .post('/api/users/register')
+        .send({ name: 'test1001', password: 'test1001' })
+        .expect(422)
+
+      await api
+        .post('/api/users/register')
+        .send({ password: 'test1002', email: 'test1002@email.com' })
+        .expect(422)
+    })
+
+    it('fails if password is less than 8 characters', async () => {
+      await api
+        .post(`/api/users/register`)
+        .send({
+          name: 'test2000',
+          email: 'test2000@email.com',
+          password: 'test200'
+        })
+        .expect(422)
+    })
+  })
 })
 
 afterAll(async () => {

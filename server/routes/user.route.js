@@ -8,4 +8,6 @@ router.get('/', userController.getAll)
 
 router.get('/:id', userController.getOne)
 
+router.post('/register', userController.register)
+
 export default router

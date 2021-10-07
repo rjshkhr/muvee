@@ -7,13 +7,13 @@
   "private": true,
   "scripts": {
     "start": "NODE_ENV=production node server",
-    "dev": "NODE_ENV=development nodemon server",
+    "start:dev": "NODE_ENV=development nodemon server",
+    "start:test": "NODE_ENV=test node server",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules jest",
-    "start:test": "NODE_ENV=test node server",
     "heroku-prebuild": "cd client && npm install --dev && npm run build"
   },
   "repository": {
@@ -37,7 +37,8 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "helmet": "^4.6.0",
-    "mongoose": "^6.0.8"
+    "mongoose": "^6.0.8",
+    "morgan": "^1.10.0"
   },
   "engines": {
     "node": "16.x"

@@ -6,6 +6,7 @@ import { fileURLToPath } from 'url'
 
 import connectDb from './utils/connect-db.js'
 import unknownEndpoint from './middlewares/unknown-endpoint.js'
+import errorHandler from './middlewares/error-handler.js'
 import userRoute from './routes/user.route.js'
 
 const app = express()
@@ -31,5 +32,6 @@ app.get('/health', (_req, res) => {
 app.use('/api/users', userRoute)
 
 app.use(unknownEndpoint)
+app.use(errorHandler)
 
 export default app

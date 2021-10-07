@@ -1,5 +1,5 @@
 import userService from '../services/user.service.js'
-import { hashPassword } from '../utils/encrypt-password.js'
+import { comparePassowrd, hashPassword } from '../utils/encrypt-password.js'
 
 const getAll = async (_req, res, next) => {
   try {
@@ -46,8 +46,29 @@ const register = async (req, res, next) => {
   }
 }
 
+const login = async (req, res, next) => {
+  const { email, password } = req.body
+
+  try {
+    const existingUser = await userService.getUserByQuery({ email })
+
+    const passwordMatch = !existingUser
+      ? false
+      : await comparePassowrd(password, existingUser.passwordHash)
+
+    if (!(existingUser && passwordMatch)) {
+      return res.status(401).json({ error: 'invalid credentials' })
+    }
+
+    res.json(existingUser)
+  } catch (err) {
+    next(err)
+  }
+}
+
 export default {
   getAll,
   getOne,
-  register
+  register,
+  login
 }

@@ -122,6 +122,48 @@ describe('When initially there are some users', () => {
         .expect(422)
     })
   })
+
+  describe('POST /api/users/login', () => {
+    beforeEach(async () => {
+      await api.post('/api/users/register').send({
+        name: 'test1000',
+        email: 'test1000@email.com',
+        password: 'test1000'
+      })
+    })
+
+    it('logs in a registered user', async () => {
+      await api
+        .post('/api/users/login')
+        .send({ email: 'test1000@email.com', password: 'test1000' })
+        .expect(200)
+        .expect('Content-Type', /json/)
+    })
+
+    it('fails if email or password is incorrect', async () => {
+      await api
+        .post('/api/users/login')
+        .send({ email: 'test1000@email.com', password: 'incorrect' })
+        .expect(401)
+
+      await api
+        .post('/api/users/login')
+        .send({ email: 'incorrect@email.com', password: 'test1000' })
+        .expect(401)
+    })
+
+    it('fails if email or password is missing', async () => {
+      await api
+        .post('/api/users/login')
+        .send({ email: 'test100@email.com' })
+        .expect(422)
+
+      await api
+        .post('/api/users/login')
+        .send({ password: 'test1000' })
+        .expect(422)
+    })
+  })
 })
 
 afterAll(async () => {

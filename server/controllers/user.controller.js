@@ -11,4 +11,20 @@ const getAll = async (_req, res) => {
   }
 }
 
-export default { getAll }
+const getOne = async (req, res) => {
+  try {
+    const user = await userService.getUserById(req.params.id)
+    if (!user) {
+      return res.status(404).json({ error: 'user not found' })
+    }
+    res.json(user)
+  } catch (err) {
+    logger.error(err)
+    res.status(500).json({ message: 'error' })
+  }
+}
+
+export default {
+  getAll,
+  getOne
+}

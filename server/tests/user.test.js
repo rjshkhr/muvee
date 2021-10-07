@@ -33,6 +33,28 @@ describe('When initially there are some users', () => {
       expect(emails).toContain(helper.initialUsers[0].email)
     })
   })
+
+  describe('GET /api/users/:id', () => {
+    it('returns one user if correct id is provided', async () => {
+      const users = await helper.usersInDb()
+      const userToView = users[0]
+
+      const res = await api
+        .get(`/api/users/${userToView.id}`)
+        .expect(200)
+        .expect('Content-Type', /json/)
+
+      const parsedUserToView = JSON.parse(JSON.stringify(userToView))
+      expect(res.body).toEqual(parsedUserToView)
+    })
+
+    it('fails with if id does not exist', async () => {
+      await api
+        .get(`/api/users/507f1f77bcf86cd799439011`)
+        .expect(404)
+        .expect('Content-Type', /json/)
+    })
+  })
 })
 
 afterAll(async () => {

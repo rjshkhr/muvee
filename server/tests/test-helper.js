@@ -1,3 +1,5 @@
+import userService from '../services/user.service.js'
+
 const initialUsers = [
   {
     name: 'root',
@@ -11,4 +13,9 @@ const initialUsers = [
   }
 ]
 
-export default { initialUsers }
+const usersInDb = async () => await userService.getAllUsers()
+
+export default {
+  initialUsers,
+  usersInDb
+}

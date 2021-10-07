@@ -1,10 +1,11 @@
 import userService from '../services/user.service.js'
 import { comparePassowrd, hashPassword } from '../utils/encrypt-password.js'
+import HttpError from '../utils/http-error.js'
 
 const getAll = async (_req, res, next) => {
   try {
     const users = await userService.getAllUsers()
-    res.json(users)
+    res.json({ data: users })
   } catch (err) {
     next(err)
   }
@@ -14,9 +15,9 @@ const getOne = async (req, res, next) => {
   try {
     const user = await userService.getUserById(req.params.id)
     if (!user) {
-      return res.status(404).json({ error: 'user not found' })
+      throw new HttpError(404, 'user not found')
     }
-    res.json(user)
+    res.json({ data: user })
   } catch (err) {
     next(err)
   }
@@ -29,7 +30,7 @@ const register = async (req, res, next) => {
     const existingUser = await userService.getUserByQuery({ email })
 
     if (existingUser) {
-      return res.status(409).json({ error: 'email already in use' })
+      throw new HttpError(409, 'email already in use')
     }
 
     const passwordHash = await hashPassword(password)
@@ -40,7 +41,7 @@ const register = async (req, res, next) => {
       passwordHash
     })
 
-    res.status(201).json(createdUser)
+    res.status(201).json({ data: createdUser, message: 'user registered' })
   } catch (err) {
     next(err)
   }
@@ -57,10 +58,10 @@ const login = async (req, res, next) => {
       : await comparePassowrd(password, existingUser.passwordHash)
 
     if (!(existingUser && passwordMatch)) {
-      return res.status(401).json({ error: 'invalid credentials' })
+      throw new HttpError(401, 'invalid credentials')
     }
 
-    res.json(existingUser)
+    res.json({ data: existingUser, message: 'user logged in' })
   } catch (err) {
     next(err)
   }

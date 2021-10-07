@@ -1,26 +1,15 @@
 import express from 'express'
 import helmet from 'helmet'
-import mongoose from 'mongoose'
 import morgan from 'morgan'
 import path, { dirname } from 'path'
 import { fileURLToPath } from 'url'
 
-import config from './utils/config.js'
-import logger from './utils/logger.js'
+import connectDb from './utils/connect-db.js'
 import unknownEndpoint from './middlewares/unknown-endpoint.js'
 
 const app = express()
 
-logger.info('Connecting to', config.MONGODB_URI)
-
-mongoose
-  .connect(config.MONGODB_URI)
-  .then(() => {
-    logger.info('Connected to MongoDB')
-  })
-  .catch(err => {
-    logger.error('Error connecting to MongoDB:', err.message)
-  })
+connectDb()
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)

@@ -7,6 +7,7 @@ import { fileURLToPath } from 'url'
 
 import config from './utils/config.js'
 import logger from './utils/logger.js'
+import unknownEndpoint from './middlewares/unknown-endpoint.js'
 
 const app = express()
 
@@ -36,5 +37,7 @@ app.use(morgan('dev'))
 app.get('/health', (_req, res) => {
   res.send('ok')
 })
+
+app.use(unknownEndpoint)
 
 export default app

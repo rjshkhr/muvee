@@ -1,17 +1,15 @@
 import userService from '../services/user.service.js'
-import logger from '../utils/logger.js'
 
-const getAll = async (_req, res) => {
+const getAll = async (_req, res, next) => {
   try {
     const users = await userService.getAllUsers()
     res.json(users)
   } catch (err) {
-    logger.error(err)
-    res.status(500).json({ message: 'error' })
+    next(err)
   }
 }
 
-const getOne = async (req, res) => {
+const getOne = async (req, res, next) => {
   try {
     const user = await userService.getUserById(req.params.id)
     if (!user) {
@@ -19,8 +17,7 @@ const getOne = async (req, res) => {
     }
     res.json(user)
   } catch (err) {
-    logger.error(err)
-    res.status(500).json({ message: 'error' })
+    next(err)
   }
 }
 

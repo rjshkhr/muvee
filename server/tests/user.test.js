@@ -48,11 +48,15 @@ describe('When initially there are some users', () => {
       expect(res.body).toEqual(parsedUserToView)
     })
 
-    it('fails with if id does not exist', async () => {
+    it('fails if id does not exist', async () => {
       await api
         .get(`/api/users/507f1f77bcf86cd799439011`)
         .expect(404)
         .expect('Content-Type', /json/)
+    })
+
+    it('fails if id is invalid', async () => {
+      await api.get('/api/users/abc').expect(400).expect('Content-Type', /json/)
     })
   })
 })

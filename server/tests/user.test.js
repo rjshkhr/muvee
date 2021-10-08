@@ -20,7 +20,7 @@ describe('When initially there are some users', () => {
         .expect(200)
         .expect('Content-Type', /json/)
 
-      expect(res.body).toHaveLength(helper.initialUsers.length)
+      expect(res.body.data).toHaveLength(helper.initialUsers.length)
     })
 
     it('contains a specific user', async () => {
@@ -29,7 +29,7 @@ describe('When initially there are some users', () => {
         .expect(200)
         .expect('Content-Type', /json/)
 
-      const emails = res.body.map(user => user.email)
+      const emails = res.body.data.map(user => user.email)
       expect(emails).toContain(helper.initialUsers[0].email)
     })
   })
@@ -45,7 +45,7 @@ describe('When initially there are some users', () => {
         .expect('Content-Type', /json/)
 
       const parsedUserToView = JSON.parse(JSON.stringify(userToView))
-      expect(res.body).toEqual(parsedUserToView)
+      expect(res.body.data).toEqual(parsedUserToView)
     })
 
     it('fails if id does not exist', async () => {

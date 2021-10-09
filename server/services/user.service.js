@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken'
 
 import User from '../models/user.model.js'
 import config from '../utils/config.js'
+import redisClient from '../utils/connect-redis.js'
 
 const getAllUsers = async () => await User.find()
 
@@ -26,6 +27,17 @@ const signToken = id => {
   return jwt.sign({ id }, config.TOKEN_SECRET, options)
 }
 
+const signRefreshToken = async id => {
+  const options = { expiresIn: config.REFRESH_TOKEN_LIFE }
+  const refreshToken = jwt.sign({ id }, config.REFRESH_TOKEN_SECRET, options)
+  await redisClient.set(id.toString(), JSON.stringify({ refreshToken }))
+  return refreshToken
+}
+
+const removeRefreshToken = async id => {
+  await redisClient.del(id.toString())
+}
+
 export default {
   getAllUsers,
   getUserById,
@@ -33,5 +45,7 @@ export default {
   createUser,
   hashPassword,
   validatePassowrd,
-  signToken
+  signToken,
+  signRefreshToken,
+  removeRefreshToken
 }

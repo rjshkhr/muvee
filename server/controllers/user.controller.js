@@ -43,9 +43,10 @@ const register = async (req, res, next) => {
     })
 
     const token = userService.signToken(createdUser.id)
+    const refreshToken = await userService.signRefreshToken(createdUser.id)
 
     res.status(201).json({
-      data: { token, user: createdUser },
+      data: { token, refreshToken, user: createdUser },
       message: 'user registered'
     })
   } catch (err) {
@@ -68,8 +69,12 @@ const login = async (req, res, next) => {
     }
 
     const token = userService.signToken(existingUser.id)
+    const refreshToken = await userService.signRefreshToken(existingUser.id)
 
-    res.json({ data: { token, user: existingUser }, message: 'user logged in' })
+    res.json({
+      data: { token, refreshToken, user: existingUser },
+      message: 'user logged in'
+    })
   } catch (err) {
     next(err)
   }
@@ -82,10 +87,29 @@ const getSecret = async (req, res, next) => {
     if (!user) throw new HttpError(404, 'user not found')
 
     if (req.params.id !== req.id) {
-      throw new HttpError(403, 'token invalid or missing')
+      throw new HttpError(403, 'token invalid')
     }
 
     res.json({ data: 'secret route' })
+  } catch (err) {
+    next(err)
+  }
+}
+
+const logout = async (req, res, next) => {
+  try {
+    await userService.removeRefreshToken(req.id)
+    res.json({ message: 'user logged out' })
+  } catch (err) {
+    next(err)
+  }
+}
+
+const regenerateToken = async (req, res, next) => {
+  try {
+    const token = userService.signToken(req.id)
+    const refreshToken = await userService.signRefreshToken(req.id)
+    res.json({ data: { token, refreshToken } })
   } catch (err) {
     next(err)
   }
@@ -96,5 +120,7 @@ export default {
   getOne,
   register,
   login,
-  getSecret
+  getSecret,
+  logout,
+  regenerateToken
 }

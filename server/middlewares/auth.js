@@ -31,9 +31,9 @@ const verifyRefreshToken = async (req, _res, next) => {
     const { id } = jwt.verify(refreshToken, config.REFRESH_TOKEN_SECRET)
     req.id = id
 
-    const tokenString = await redisClient.get(id)
+    const tokenInRedis = await redisClient.get(id)
 
-    if (!tokenString || JSON.parse(tokenString).refreshToken !== refreshToken) {
+    if (!tokenInRedis || tokenInRedis !== refreshToken) {
       throw new HttpError(403, 'invalid token')
     }
 

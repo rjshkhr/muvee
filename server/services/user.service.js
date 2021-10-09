@@ -30,7 +30,7 @@ const signToken = id => {
 const signRefreshToken = async id => {
   const options = { expiresIn: config.REFRESH_TOKEN_LIFE }
   const refreshToken = jwt.sign({ id }, config.REFRESH_TOKEN_SECRET, options)
-  await redisClient.set(id.toString(), JSON.stringify({ refreshToken }))
+  await redisClient.set(id, refreshToken, 'PX', config.REFRESH_TOKEN_LIFE)
   return refreshToken
 }
 

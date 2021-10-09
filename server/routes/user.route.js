@@ -3,6 +3,7 @@ import { Router } from 'express'
 import userController from '../controllers/user.controller.js'
 import validateRequest from '../middlewares/validate-request.js'
 import userValidator from '../validators/user.validator.js'
+import { verifyToken } from '../middlewares/auth.js'
 
 const router = Router()
 
@@ -21,5 +22,7 @@ router.post(
   validateRequest(userValidator.login),
   userController.login
 )
+
+router.get('/secret/:id', verifyToken, userController.getSecret)
 
 export default router

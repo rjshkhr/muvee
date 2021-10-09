@@ -2,7 +2,7 @@ import { config } from 'dotenv'
 
 config()
 
-const { PORT } = process.env
+const { PORT, TOKEN_SECRET, TOKEN_LIFE } = process.env
 
 const MONGODB_URI =
   process.env.NODE_ENV === 'test'
@@ -11,5 +11,7 @@ const MONGODB_URI =
 
 export default {
   PORT,
-  MONGODB_URI
+  MONGODB_URI,
+  TOKEN_SECRET,
+  TOKEN_LIFE
 }

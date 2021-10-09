@@ -1,5 +1,4 @@
 import userService from '../services/user.service.js'
-import { comparePassowrd, hashPassword } from '../utils/encrypt-password.js'
 import HttpError from '../utils/http-error.js'
 
 const getAll = async (_req, res, next) => {
@@ -14,9 +13,11 @@ const getAll = async (_req, res, next) => {
 const getOne = async (req, res, next) => {
   try {
     const user = await userService.getUserById(req.params.id)
+
     if (!user) {
       throw new HttpError(404, 'user not found')
     }
+
     res.json({ data: user })
   } catch (err) {
     next(err)
@@ -33,7 +34,7 @@ const register = async (req, res, next) => {
       throw new HttpError(409, 'email already in use')
     }
 
-    const passwordHash = await hashPassword(password)
+    const passwordHash = await userService.hashPassword(password)
 
     const createdUser = await userService.createUser({
       name,
@@ -41,7 +42,12 @@ const register = async (req, res, next) => {
       passwordHash
     })
 
-    res.status(201).json({ data: createdUser, message: 'user registered' })
+    const token = userService.signToken(createdUser.id)
+
+    res.status(201).json({
+      data: { token, user: createdUser },
+      message: 'user registered'
+    })
   } catch (err) {
     next(err)
   }
@@ -55,13 +61,31 @@ const login = async (req, res, next) => {
 
     const passwordMatch = !existingUser
       ? false
-      : await comparePassowrd(password, existingUser.passwordHash)
+      : await userService.validatePassowrd(password, existingUser.passwordHash)
 
     if (!(existingUser && passwordMatch)) {
       throw new HttpError(401, 'invalid credentials')
     }
 
-    res.json({ data: existingUser, message: 'user logged in' })
+    const token = userService.signToken(existingUser.id)
+
+    res.json({ data: { token, user: existingUser }, message: 'user logged in' })
+  } catch (err) {
+    next(err)
+  }
+}
+
+const getSecret = async (req, res, next) => {
+  try {
+    const user = await userService.getUserById(req.params.id)
+
+    if (!user) throw new HttpError(404, 'user not found')
+
+    if (req.params.id !== req.id) {
+      throw new HttpError(403, 'token invalid or missing')
+    }
+
+    res.json({ data: 'secret route' })
   } catch (err) {
     next(err)
   }
@@ -71,5 +95,6 @@ export default {
   getAll,
   getOne,
   register,
-  login
+  login,
+  getSecret
 }

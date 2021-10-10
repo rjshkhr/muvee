@@ -8,7 +8,7 @@ import { verifyToken, verifyRefreshToken } from '../middlewares/auth.js'
 const router = Router()
 router.get('/', userController.getAll)
 
-router.get('/:id', userController.getOne)
+router.get('/profile/:id', verifyToken, userController.getOne)
 
 router.post(
   '/register',
@@ -25,7 +25,5 @@ router.post(
 router.delete('/logout', verifyToken, userController.logout)
 
 router.post('/refresh', verifyRefreshToken, userController.regenerateToken)
-
-router.get('/secret/:id', verifyToken, userController.getSecret)
 
 export default router

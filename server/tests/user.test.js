@@ -156,7 +156,6 @@ describe('When initially there are some users', () => {
         .expect('Content-Type', /json/)
     })
 
-
     it('fails if id is invalid or user does not exist', async () => {
       await api
         .get(`/api/users/profile/invalid`)

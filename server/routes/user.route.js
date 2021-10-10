@@ -11,7 +11,7 @@ router.get('/profile/:id', verifyToken, userController.getOne)
 
 router.post(
   '/register',
-  validateRequest(userValidator.regiser),
+  validateRequest(userValidator.register),
   userController.register
 )
 

@@ -2,11 +2,11 @@ import axios from 'axios'
 
 import config from '../utils/config.js'
 
-const baseUrl = 'https://api.themoviedb.org/3'
+const baseUrl = 'https://api.themoviedb.org/3/movie'
 
 const getMovies = async (type, page = 1) => {
   const response = await axios.get(
-    `${baseUrl}/movie/${type}?api_key=${config.TMDB_API_KEY}&language=en-US&page=${page}`
+    `${baseUrl}/${type}?api_key=${config.TMDB_API_KEY}&language=en-US&page=${page}`
   )
   return response.data
 }
@@ -47,9 +47,22 @@ const getUpcoming = async (req, res, next) => {
   }
 }
 
+const getDetails = async (req, res, next) => {
+  try {
+    const movieDetails = await axios.get(
+      `${baseUrl}/${req.params.id}?api_key=${config.TMDB_API_KEY}&language=en-US`
+    )
+
+    res.json({ data: movieDetails.data })
+  } catch (err) {
+    next(err)
+  }
+}
+
 export default {
   getPopular,
   getTopRated,
   getNowPlaying,
-  getUpcoming
+  getUpcoming,
+  getDetails
 }

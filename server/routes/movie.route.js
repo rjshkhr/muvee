@@ -12,4 +12,6 @@ router.get('/nowplaying', movieController.getNowPlaying)
 
 router.get('/upcoming', movieController.getUpcoming)
 
+router.get('/details/:id', movieController.getDetails)
+
 export default router

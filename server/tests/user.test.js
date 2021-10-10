@@ -3,15 +3,31 @@ import mongoose from 'mongoose'
 
 import app from '../app.js'
 import User from '../models/user.model.js'
-import helper from './test-helper.js'
 import userService from '../services/user.service.js'
 
 const api = supertest(app)
 
 describe('When initially there are some users', () => {
+  let user1
+  let user2
+
   beforeEach(async () => {
     await User.deleteMany()
-    await User.insertMany(helper.initialUsers)
+
+    user1 = {
+      name: 'root',
+      email: 'root@email.com',
+      passwordHash: await userService.hashPassword('rootuser')
+    }
+
+    user2 = {
+      name: 'user1',
+      email: 'user1@email.com',
+      passwordHash: await userService.hashPassword('firstuser')
+    }
+
+    await userService.createUser(user1)
+    await userService.createUser(user2)
   })
 
   describe('POST /api/users/register', () => {
@@ -31,9 +47,8 @@ describe('When initially there are some users', () => {
       expect(res.body.passwordHash).not.toEqual(newUser.password)
 
       const updatedUsers = await userService.getAllUsers()
-      expect(updatedUsers).toHaveLength(helper.initialUsers.length + 1)
-
       const emails = updatedUsers.map(user => user.email)
+
       expect(emails).toContain(newUser.email)
     })
 
@@ -42,7 +57,7 @@ describe('When initially there are some users', () => {
         .post(`/api/users/register`)
         .send({
           name: 'test1000',
-          email: helper.initialUsers[0].email,
+          email: user1.email,
           password: 'test1000'
         })
         .expect(409)
@@ -174,5 +189,6 @@ describe('When initially there are some users', () => {
 })
 
 afterAll(async () => {
+  await User.deleteMany()
   await mongoose.connection.close()
 })

@@ -1,21 +1,16 @@
 import userService from '../services/user.service.js'
 import HttpError from '../utils/http-error.js'
 
-const getAll = async (_req, res, next) => {
-  try {
-    const users = await userService.getAllUsers()
-    res.json({ data: users })
-  } catch (err) {
-    next(err)
-  }
-}
-
 const getOne = async (req, res, next) => {
   try {
     const user = await userService.getUserById(req.params.id)
 
     if (!user) {
       throw new HttpError(404, 'user not found')
+    }
+
+    if (user.id !== req.userId) {
+      throw new HttpError(403, 'token invalid')
     }
 
     res.json({ data: user })
@@ -80,25 +75,9 @@ const login = async (req, res, next) => {
   }
 }
 
-const getSecret = async (req, res, next) => {
-  try {
-    const user = await userService.getUserById(req.params.id)
-
-    if (!user) throw new HttpError(404, 'user not found')
-
-    if (req.params.id !== req.id) {
-      throw new HttpError(403, 'token invalid')
-    }
-
-    res.json({ data: 'secret route' })
-  } catch (err) {
-    next(err)
-  }
-}
-
 const logout = async (req, res, next) => {
   try {
-    await userService.removeRefreshToken(req.id)
+    await userService.removeRefreshToken(req.userId)
     res.json({ message: 'user logged out' })
   } catch (err) {
     next(err)
@@ -107,8 +86,8 @@ const logout = async (req, res, next) => {
 
 const regenerateToken = async (req, res, next) => {
   try {
-    const token = userService.signToken(req.id)
-    const refreshToken = await userService.signRefreshToken(req.id)
+    const token = userService.signToken(req.userId)
+    const refreshToken = await userService.signRefreshToken(req.userId)
     res.json({ data: { token, refreshToken } })
   } catch (err) {
     next(err)
@@ -116,11 +95,9 @@ const regenerateToken = async (req, res, next) => {
 }
 
 export default {
-  getAll,
   getOne,
   register,
   login,
-  getSecret,
   logout,
   regenerateToken
 }

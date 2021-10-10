@@ -4,6 +4,7 @@ import mongoose from 'mongoose'
 import app from '../app.js'
 import User from '../models/user.model.js'
 import helper from './test-helper.js'
+import userService from '../services/user.service.js'
 
 const api = supertest(app)
 
@@ -11,53 +12,6 @@ describe('When initially there are some users', () => {
   beforeEach(async () => {
     await User.deleteMany()
     await User.insertMany(helper.initialUsers)
-  })
-
-  describe('GET /api/users', () => {
-    it('returns all users', async () => {
-      const res = await api
-        .get('/api/users')
-        .expect(200)
-        .expect('Content-Type', /json/)
-
-      expect(res.body.data).toHaveLength(helper.initialUsers.length)
-    })
-
-    it('contains a specific user', async () => {
-      const res = await api
-        .get('/api/users')
-        .expect(200)
-        .expect('Content-Type', /json/)
-
-      const emails = res.body.data.map(user => user.email)
-      expect(emails).toContain(helper.initialUsers[0].email)
-    })
-  })
-
-  describe('GET /api/users/:id', () => {
-    it('returns one user if correct id is provided', async () => {
-      const users = await helper.usersInDb()
-      const userToView = users[0]
-
-      const res = await api
-        .get(`/api/users/${userToView.id}`)
-        .expect(200)
-        .expect('Content-Type', /json/)
-
-      const parsedUserToView = JSON.parse(JSON.stringify(userToView))
-      expect(res.body.data).toEqual(parsedUserToView)
-    })
-
-    it('fails if id does not exist', async () => {
-      await api
-        .get(`/api/users/507f1f77bcf86cd799439011`)
-        .expect(404)
-        .expect('Content-Type', /json/)
-    })
-
-    it('fails if id is invalid', async () => {
-      await api.get('/api/users/abc').expect(400).expect('Content-Type', /json/)
-    })
   })
 
   describe('POST /api/users/register', () => {
@@ -76,7 +30,7 @@ describe('When initially there are some users', () => {
 
       expect(res.body.passwordHash).not.toEqual(newUser.password)
 
-      const updatedUsers = await helper.usersInDb()
+      const updatedUsers = await userService.getAllUsers()
       expect(updatedUsers).toHaveLength(helper.initialUsers.length + 1)
 
       const emails = updatedUsers.map(user => user.email)
@@ -162,6 +116,60 @@ describe('When initially there are some users', () => {
         .post('/api/users/login')
         .send({ password: 'test1000' })
         .expect(422)
+    })
+  })
+
+  describe('GET /api/users/profile/:id', () => {
+    let loggedInUser
+
+    beforeEach(async () => {
+      loggedInUser = await api.post('/api/users/register').send({
+        name: 'test1000',
+        email: 'test1000@email.com',
+        password: 'test1000'
+      })
+    })
+
+    it('returns the user if correct id and token is provided', async () => {
+      const res = await api
+        .get(`/api/users/profile/${loggedInUser.body.data.user.id}`)
+        .send({ email: 'test1000@email.com', password: 'test1000' })
+        .set('Authorization', 'bearer ' + loggedInUser.body.data.token)
+        .expect(200)
+        .expect('Content-Type', /json/)
+
+      expect(res.body.data.email).toBe('test1000@email.com')
+    })
+
+    it('fails if token is not provided or invalid', async () => {
+      await api
+        .get(`/api/users/profile/${loggedInUser.body.data.user.id}`)
+        .send({ email: 'test1000@email.com', password: 'test1000' })
+        .expect(401)
+        .expect('Content-Type', /json/)
+
+      await api
+        .get(`/api/users/profile/${loggedInUser.body.data.user.id}`)
+        .set('Authorization', 'bearer ' + 'invalid token')
+        .send({ email: 'test1000@email.com', password: 'test1000' })
+        .expect(403)
+        .expect('Content-Type', /json/)
+    })
+
+
+    it('fails if id is invalid or user does not exist', async () => {
+      await api
+        .get(`/api/users/profile/invalid`)
+        .set('Authorization', 'bearer ' + loggedInUser.body.data.token)
+        .expect(400)
+        .expect('Content-Type', /json/)
+
+      await api
+        .get(`/api/users/profile/507f1f77bcf86cd799439011`)
+        .set('Authorization', 'bearer ' + loggedInUser.body.data.token)
+        .send({ email: 'test1000@email.com', password: 'test1000' })
+        .expect(404)
+        .expect('Content-Type', /json/)
     })
   })
 })

@@ -32,7 +32,7 @@ const verifyRefreshToken = async (req, _res, next) => {
 
     const tokenInRedis = await redisClient.get(id)
 
-    if (!tokenInRedis || tokenInRedis !== refreshToken) {
+    if (!(tokenInRedis && tokenInRedis === refreshToken)) {
       throw new HttpError(403, 'invalid token')
     }
 

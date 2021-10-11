@@ -35,7 +35,7 @@ const signRefreshToken = async id => {
 }
 
 const removeRefreshToken = async id => {
-  await redisClient.del(id.toString())
+  await redisClient.del(id)
 }
 
 export default {

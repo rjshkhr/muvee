@@ -9,6 +9,7 @@ import unknownEndpoint from './middlewares/unknown-endpoint.js'
 import errorHandler from './middlewares/error-handler.js'
 import userRoute from './routes/user.route.js'
 import movieRoute from './routes/movie.route.js'
+import watchlistRoute from './routes/watchlist.route.js'
 
 connectDb()
 
@@ -32,6 +33,7 @@ app.get('/health', (_req, res) => {
 
 app.use('/api/users', userRoute)
 app.use('/api/movies', movieRoute)
+app.use('/api/watchlist', watchlistRoute)
 
 app.use(unknownEndpoint)
 app.use(errorHandler)

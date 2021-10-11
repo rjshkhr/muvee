@@ -1,6 +1,6 @@
-import { Schema, model } from 'mongoose'
+import mongoose from 'mongoose'
 
-const watchlistSchema = new Schema({
+const watchlistSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true
@@ -16,7 +16,7 @@ const watchlistSchema = new Schema({
   releaseYear: Number,
   voteAvg: Number,
   user: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   }
 })
@@ -29,4 +29,4 @@ watchlistSchema.set('toJSON', {
   }
 })
 
-export default model('Watchlist', watchlistSchema)
+export default mongoose.model('Watchlist', watchlistSchema)

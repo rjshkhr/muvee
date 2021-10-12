@@ -1,3 +1,3 @@
-import Register from 'register'
+import Register from './Register'
 
 export default Register

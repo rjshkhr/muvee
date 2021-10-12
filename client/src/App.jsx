@@ -1,29 +1,23 @@
-import { useEffect, useState } from 'react'
+import { Route, Switch } from 'react-router-dom'
 
-const App = () => {
-  const [data, setData] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(false)
+import Header from './components/Header'
+import Home from './pages/Home'
+import Login from './pages/Login'
+import Register from './pages/Register'
+import Watchlist from './pages/Watchlist'
+import NotFound from './pages/NotFound'
 
-  useEffect(() => {
-    const getMessage = async () => {
-      try {
-        const res = await fetch('/api/message')
-        const data = await res.json()
-        setData(data)
-        setLoading(false)
-      } catch (err) {
-        setError(true)
-        console.log(err.message)
-      }
-    }
-    getMessage()
-  }, [])
-
-  if (loading) return <p data-testid='loading'>Loading...</p>
-  if (error) return <p data-testid='error'>Error loading</p>
-
-  return <h1 data-testid='helloWorld'>{data?.message}</h1>
-}
+const App = () => (
+  <>
+    <Header />
+    <Switch>
+      <Route exact path='/' component={Home} />
+      <Route path='/login' component={Login} />
+      <Route path='/register' component={Register} />
+      <Route path='/watchlist' component={Watchlist} />
+      <Route path='*' component={NotFound} />
+    </Switch>
+  </>
+)
 
 export default App

@@ -1,10 +1,21 @@
+import PropTypes from 'prop-types'
+
+import * as Styled from './Header.styles'
+
 import Navbar from './Navbar'
 
-const Header = () => (
-  <header>
-    <h1>Header</h1>
-    <Navbar />
-  </header>
+const Header = ({ theme, toggleTheme }) => (
+  <Styled.Container>
+    <Styled.Header>
+      <Styled.Title>Muvee</Styled.Title>
+      <Navbar theme={theme} toggleTheme={toggleTheme} />
+    </Styled.Header>
+  </Styled.Container>
 )
+
+Header.propTypes = {
+  theme: PropTypes.string,
+  toggleTheme: PropTypes.func
+}
 
 export default Header

@@ -65,7 +65,8 @@ export const ThemeToggleButton = styled.button`
   ${center}
   font-size: 1.5rem;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     color: ${({ theme }) => theme.primary};
   }
 `
@@ -79,12 +80,13 @@ export const ProfileIconLink = styled(NavLink)`
   margin-left: 0.5em;
   padding: 0.2em;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: ${({ theme }) => theme.primary2};
     color: #fff;
   }
 
   &::before {
-      display: none;
+    display: none;
   }
 `

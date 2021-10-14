@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux'
 
-import Button from "../../components/Button"
-import { logoutAction, getNewTokenAction } from  '../../store/auth/actions'
+import Button from '../../components/Button'
+import { logoutAction, getNewTokenAction } from '../../store/auth/actions'
 
 const Home = () => {
   const dispatch = useDispatch()

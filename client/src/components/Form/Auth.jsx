@@ -70,7 +70,9 @@ const Auth = ({ label }) => {
           />
         </Styled.FormGroup>
 
-        <Button type='submit' fullWidth>{label}</Button>
+        <Button type='submit' fullWidth>
+          {label}
+        </Button>
 
         {label === 'register' ? (
           <Styled.Text>

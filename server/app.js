@@ -27,7 +27,7 @@ const __dirname = dirname(__filename)
 
 app.use(express.static(path.join(__dirname, '../client/build')))
 
-if (process.env.PRODUCTION) {
+if (process.env.NODE_ENV === 'production') {
   app.get('*', (_req, res) => {
     res.sendFile(path.join(__dirname, '../client/build/index.html'))
   })

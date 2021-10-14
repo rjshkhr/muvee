@@ -29,6 +29,7 @@ export const NavList = styled.ul`
     top: 6em;
     transition: width 0.3s ease-in-out;
     width: ${({ showList }) => (showList ? '100%' : '0')};
+    z-index: 1;
   }
 `
 
@@ -51,6 +52,7 @@ export const NavItem = styled.li`
 `
 
 export const Link = styled(NavLink)`
+  color: ${({ theme }) => theme.text};
   font-weight: 600;
 
   &.selected,
@@ -62,6 +64,10 @@ export const Link = styled(NavLink)`
 export const ThemeToggleButton = styled.button`
   ${center}
   font-size: 1.5rem;
+
+  &:hover, &:focus {
+    color: ${({ theme }) => theme.primary};
+  }
 `
 
 export const ProfileIconLink = styled(NavLink)`
@@ -72,4 +78,13 @@ export const ProfileIconLink = styled(NavLink)`
   font-size: 1.5rem;
   margin-left: 0.5em;
   padding: 0.2em;
+
+  &:hover, &:focus {
+    background-color: ${({ theme }) => theme.primary2};
+    color: #fff;
+  }
+
+  &::before {
+      display: none;
+  }
 `

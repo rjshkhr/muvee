@@ -10,6 +10,7 @@ const FontStyles = createGlobalStyle`
       font-family: "Montserrat";
       font-weight: 500;
       font-style: normal;
+      font-display: block;
       src: url(${MontserratMedium}) format("woff2");
   }
 
@@ -17,6 +18,7 @@ const FontStyles = createGlobalStyle`
       font-family: "Montserrat";
       font-weight: 500;
       font-style: italic;
+      font-display: block;
       src: url(${MontserratMediumItalic}) format("woff2");
   }
 
@@ -24,6 +26,7 @@ const FontStyles = createGlobalStyle`
       font-family: "Montserrat";
       font-weight: 600;
       font-style: normal;
+      font-display: block;
       src: url(${MontserratSemiBold}) format("woff2");
   }
 
@@ -31,6 +34,7 @@ const FontStyles = createGlobalStyle`
       font-family: "Montserrat";
       font-weight: 600;
       font-style: italic;
+      font-display: block;
       src: url(${MontserratSemiBoldItalic}) format("woff2");
   }
 `

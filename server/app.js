@@ -15,17 +15,23 @@ connectDb()
 
 const app = express()
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
-
-app.use(helmet())
-
-app.use(express.static(path.join(__dirname, '../client/build')))
-
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.use(morgan('dev'))
+
+app.use(helmet())
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
+app.use(express.static(path.join(__dirname, '../client/build')))
+
+if (process.env.PRODUCTION) {
+  app.get('*', (_req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'))
+  })
+}
 
 app.get('/health', (_req, res) => {
   res.send('ok')

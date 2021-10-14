@@ -21,32 +21,36 @@ const App = () => {
   const user = useSelector(({ auth }) => auth.user)
 
   return (
-    <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
+    <>
       <FontStyles />
-      <GlobalStyles />
+      <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
+        <GlobalStyles />
 
-      <Header theme={theme} toggleTheme={toggleTheme} />
+        <Header theme={theme} toggleTheme={toggleTheme} />
 
-      <Styled.Main>
-        <Switch>
-          <Route exact path='/'>
-            {user ? <Home /> : <Redirect to='/login' />}
-          </Route>
+        <Styled.Main>
+          <Switch>
+            <Route exact path='/'>
+              {user ? <Home /> : <Redirect to='/login' />}
+            </Route>
 
-          <Route path='/watchlist'>
-            {user ? <Watchlist /> : <Redirect to='/login' />}
-          </Route>
+            <Route path='/watchlist'>
+              {user ? <Watchlist /> : <Redirect to='/login' />}
+            </Route>
 
-          <Route path='/login'>{!user ? <Login /> : <Redirect to='/' />}</Route>
+            <Route path='/login'>
+              {!user ? <Login /> : <Redirect to='/' />}
+            </Route>
 
-          <Route path='/register'>
-            {!user ? <Register /> : <Redirect to='/' />}
-          </Route>
+            <Route path='/register'>
+              {!user ? <Register /> : <Redirect to='/' />}
+            </Route>
 
-          <Route path='*' component={NotFound} />
-        </Switch>
-      </Styled.Main>
-    </ThemeProvider>
+            <Route path='*' component={NotFound} />
+          </Switch>
+        </Styled.Main>
+      </ThemeProvider>
+    </>
   )
 }
 

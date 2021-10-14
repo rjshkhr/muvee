@@ -40,7 +40,6 @@ export const Input = styled.input`
   font-size: inherit;
   padding: 0.5em;
   padding-left: 2em;
-  transition: border-bottom 0.15s linear;
   width: 100%;
 
   &:focus,

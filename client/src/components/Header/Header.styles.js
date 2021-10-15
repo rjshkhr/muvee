@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
+  background-color: ${({ theme }) => theme.body2};
+  box-shadow: ${({ theme }) => theme.shadowBottom};
   height: 6em;
 `
 export const Header = styled.header`

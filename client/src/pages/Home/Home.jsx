@@ -1,25 +1,26 @@
-import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
-import Button from '../../components/Button'
-import { logoutAction, getNewTokenAction } from '../../store/auth/actions'
+import MovieItem from '../../components/MovieItem'
+
+import { getPopularAction } from '../../store/movies/actions'
+import * as Styled from './Home.styles'
 
 const Home = () => {
   const dispatch = useDispatch()
 
-  const handleLogout = () => {
-    dispatch(logoutAction())
-  }
+  const popularMovies = useSelector(({ movies }) => movies.popular)
 
-  const handleGetNew = () => {
-    dispatch(getNewTokenAction())
-  }
+  useEffect(() => {
+    dispatch(getPopularAction())
+  }, [dispatch])
 
   return (
-    <>
-      <h2>Home</h2>
-      <Button onClick={handleLogout}>Log Out</Button>
-      <Button onClick={handleGetNew}>New Token</Button>
-    </>
+    <Styled.MovieList>
+      {popularMovies.map(movie => (
+        <MovieItem key={movie.id} movie={movie} />
+      ))}
+    </Styled.MovieList>
   )
 }
 

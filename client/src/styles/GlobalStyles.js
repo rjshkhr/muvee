@@ -19,7 +19,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background: ${({ theme }) => theme.body};
+    background-color: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.text};
     font-family: Montserrat, sans-serif;
     font-weight: 500;
@@ -33,6 +33,12 @@ const GlobalStyles = createGlobalStyle`
     list-style: none;
   }
 
+  img {
+    object-fit: contain;
+    border-radius: 0.5em;
+    width: 100%;
+  }
+
   a {
     color: ${({ theme }) => theme.primary};
     padding: 0 0 0.2em 0;
@@ -41,7 +47,7 @@ const GlobalStyles = createGlobalStyle`
 
     &:hover {
       color: ${({ theme }) => theme.primary};
-    }
+  }
 
     &:active {
       color: ${({ theme }) => theme.primary2};

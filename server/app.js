@@ -22,6 +22,14 @@ app.use(morgan('dev'))
 
 app.use(helmet())
 
+app.get('/health', (_req, res) => {
+  res.send('ok')
+})
+
+app.use('/api/users', userRoute)
+app.use('/api/movies', movieRoute)
+app.use('/api/watchlist', watchlistRoute)
+
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
@@ -32,14 +40,6 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(__dirname, '../client/build/index.html'))
   })
 }
-
-app.get('/health', (_req, res) => {
-  res.send('ok')
-})
-
-app.use('/api/users', userRoute)
-app.use('/api/movies', movieRoute)
-app.use('/api/watchlist', watchlistRoute)
 
 app.use(unknownEndpoint)
 app.use(errorHandler)

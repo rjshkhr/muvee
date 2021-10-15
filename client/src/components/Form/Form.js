@@ -5,9 +5,9 @@ import { BiUser } from 'react-icons/bi'
 import mediaQueries from '../../styles/mediaQueries'
 
 export const Container = styled.div`
-  background-color: ${({ theme }) => theme.body};
+  background-color: ${({ theme }) => theme.body2};
   border-radius: 0.5em;
-  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+  box-shadow: ${({ theme }) => theme.shadow};
   margin: 3em auto;
   max-width: 30em;
   padding: 3em 4em;
@@ -77,6 +77,8 @@ export const Text = styled.p`
 export const Error = styled.p`
   align-items: center;
   background-color: ${({ theme }) => theme.errorBody};
+  border: 2px solid ${({ theme }) => theme.errorText};
+  border-radius: 0.5em;
   color: ${({ theme }) => theme.errorText};
   display: flex;
   font-size: 0.9rem;

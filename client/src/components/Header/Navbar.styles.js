@@ -17,8 +17,8 @@ export const NavList = styled.ul`
   margin-right: 1em;
 
   ${mediaQueries('md')} {
-    background-color: ${({ theme }) => theme.body};
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 15px 10px -15px;
+    background-color: ${({ theme }) => theme.body2};
+    box-shadow: ${({ theme }) => theme.shadowBottom};
     flex-direction: column;
     left: 0;
     margin: 0;

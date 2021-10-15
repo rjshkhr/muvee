@@ -20,7 +20,14 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use(morgan('dev'))
 
-app.use(helmet())
+app.use(
+  helmet.contentSecurityPolicy({
+    useDefaults: true,
+    directives: {
+      'img-src': ["'self'", 'image.tmdb.org']
+    }
+  })
+)
 
 app.get('/health', (_req, res) => {
   res.send('ok')

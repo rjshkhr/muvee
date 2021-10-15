@@ -3,7 +3,6 @@ import styled from 'styled-components'
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.body2};
   box-shadow: ${({ theme }) => theme.shadowBottom};
-  height: 6em;
 `
 export const Header = styled.header`
   align-items: center;
@@ -12,6 +11,7 @@ export const Header = styled.header`
   justify-content: space-between;
   margin: 0 auto;
   max-width: 1200px;
+  position: relative;
   width: 95%;
 `
 

@@ -2,6 +2,8 @@ import styled from 'styled-components'
 import { FaStar } from 'react-icons/fa'
 import { MdPlaylistAdd } from 'react-icons/md'
 
+import mediaQueries from '../../styles/mediaQueries'
+
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.body2};
   border-radius: 1em;
@@ -12,6 +14,10 @@ export const Container = styled.div`
 
   &:hover {
     transform: translateY(-0.4em);
+  }
+
+  ${mediaQueries('sm')} {
+    width: 10em;
   }
 `
 
@@ -46,7 +52,7 @@ export const PlaylistAddIcon = styled(MdPlaylistAdd)`
   cursor: pointer;
   font-size: 1.5rem;
 
-  &:hover {
+  &:hover, &:focus {
     color: ${({ theme }) => theme.primary};
   }
 `

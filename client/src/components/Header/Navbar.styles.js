@@ -71,7 +71,7 @@ export const ThemeToggleButton = styled.button`
   }
 `
 
-export const ProfileIconLink = styled(NavLink)`
+export const ProfileIconButton = styled.button`
   ${center}
   background-color: ${({ theme }) => theme.primary};
   border-radius: 0.3em;
@@ -80,13 +80,7 @@ export const ProfileIconLink = styled(NavLink)`
   margin-left: 0.5em;
   padding: 0.2em;
 
-  &:hover,
-  &:focus {
+  &:hover, &:focus {
     background-color: ${({ theme }) => theme.primary2};
-    color: #fff;
-  }
-
-  &::before {
-    display: none;
   }
 `

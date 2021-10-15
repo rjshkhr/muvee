@@ -80,7 +80,8 @@ export const ProfileIconButton = styled.button`
   margin-left: 0.5em;
   padding: 0.2em;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: ${({ theme }) => theme.primary2};
   }
 `

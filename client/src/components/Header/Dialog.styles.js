@@ -22,7 +22,8 @@ export const DialogItem = styled.li`
   color: ${({ theme }) => theme.text2};
   cursor: pointer;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     color: ${({ theme }) => theme.primary};
   }
 `
@@ -34,7 +35,8 @@ export const DialogLink = styled(Link)`
   gap: 0.5em;
   margin: 0.5em 0;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     color: inherit;
   }
 

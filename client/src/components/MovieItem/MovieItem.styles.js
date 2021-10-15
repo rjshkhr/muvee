@@ -52,7 +52,8 @@ export const PlaylistAddIcon = styled(MdPlaylistAdd)`
   cursor: pointer;
   font-size: 1.5rem;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     color: ${({ theme }) => theme.primary};
   }
 `

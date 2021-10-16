@@ -1,10 +1,11 @@
+import PropTypes from 'prop-types'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouteMatch } from 'react-router-dom'
 
-import MovieDetails from '../../components/MovieDetails'
 
 import { getDetailsActions } from '../../store/movies/actions'
+import * as Styled from './MovieInfo.style'
 
 const MovieInfo = () => {
   const movie = useSelector(({ movieslist }) => movieslist.details)
@@ -21,7 +22,13 @@ const MovieInfo = () => {
 
   if (!movie) return null
 
-  return <MovieDetails movie={movie} />
+  return <Styled.Title>{movie.title}</Styled.Title>
+}
+
+MovieInfo.propTypes = {
+  movie: PropTypes.shape({
+    title: PropTypes.string.isRequired
+  })
 }
 
 export default MovieInfo

@@ -3,12 +3,12 @@ import { ThemeProvider } from 'styled-components'
 import { useSelector } from 'react-redux'
 
 import Header from './components/Header'
-import Home from './pages/Home'
-import Login from './pages/Login'
 import NotFound from './pages/NotFound'
-import Register from './pages/Register'
+import Home from './pages/Home'
+import Auth from './pages/Auth'
 import Watchlist from './pages/Watchlist'
 import MovieInfo from './pages/MovieInfo'
+import UserInfo from './pages/UserInfo'
 
 import FontStyles from './styles/FontStyles'
 import GlobalStyles from './styles/GlobalStyles'
@@ -40,16 +40,24 @@ const App = () => {
             </Route>
 
             <Route exact path='/login'>
-              {!user ? <Login /> : <Redirect to='/' />}
+              {!user ? <Auth label='login' /> : <Redirect to='/' />}
             </Route>
 
             <Route exact path='/register'>
-              {!user ? <Register /> : <Redirect to='/' />}
+              {!user ? <Auth label='register' /> : <Redirect to='/' />}
             </Route>
 
-            <Route exact path='/movie/:movieId' component={MovieInfo} />
+            <Route exact path='/movie/:movieId'>
+              <MovieInfo />
+            </Route>
 
-            <Route path='*' component={NotFound} />
+            <Route exact path='/user/:userId'>
+              <UserInfo />
+            </Route>
+
+            <Route exact path='*'>
+              <NotFound text='Oops! page not found...' />
+            </Route>
           </Switch>
         </Styled.Main>
       </ThemeProvider>

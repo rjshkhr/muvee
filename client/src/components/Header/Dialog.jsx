@@ -1,12 +1,14 @@
 import { BiUser } from 'react-icons/bi'
 import { MdDarkMode, MdLogout, MdMovie } from 'react-icons/md'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import * as Styled from './Dialog.styles'
 import { logoutAction } from '../../store/auth/actions'
 
 const Dialog = ({ theme, toggleTheme }) => {
+  const user = useSelector(({auth}) => auth.user)
+
   const dispatch = useDispatch()
 
   const handleLogout = () => {
@@ -17,7 +19,7 @@ const Dialog = ({ theme, toggleTheme }) => {
     <Styled.Container>
       <Styled.DialogList>
         <Styled.DialogItem>
-          <Styled.DialogLink to='/'>
+          <Styled.DialogLink to={`/user/${user.id}`}>
             <BiUser />
             Profile
           </Styled.DialogLink>

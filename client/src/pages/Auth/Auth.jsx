@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
-import Button from '../Button'
+import Button from '../../components/Button'
 
-import * as Styled from './Form'
+import * as Styled from './Auth.styles'
 import capitalize from '../../utils/capitalize'
 import { loginAction, registerAction } from '../../store/auth/actions'
 

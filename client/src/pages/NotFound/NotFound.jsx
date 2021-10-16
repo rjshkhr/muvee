@@ -1,5 +1,19 @@
-import Empty from '../../components/Empty'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
-const NotFound = () => <Empty text='Oops! page not found...' />
+import * as Styled from './NotFound.styles'
+
+const NotFound = ({ text }) => {
+  return (
+    <Styled.Container>
+      <Styled.Text>{text}</Styled.Text>
+      <Link to='/'>Back to home</Link>
+    </Styled.Container>
+  )
+}
+
+NotFound.propTypes = {
+  text: PropTypes.string.isRequired
+}
 
 export default NotFound

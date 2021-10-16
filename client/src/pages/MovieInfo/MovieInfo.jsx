@@ -9,7 +9,9 @@ import { getDetailsActions } from '../../store/movies/actions'
 import * as Styled from './MovieInfo.style'
 
 const MovieInfo = () => {
-  const { details, detailsLoading } = useSelector(({ movieslist }) => movieslist)
+  const { details, detailsLoading } = useSelector(
+    ({ movieslist }) => movieslist
+  )
 
   const {
     params: { movieId }

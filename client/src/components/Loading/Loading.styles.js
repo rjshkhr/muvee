@@ -9,6 +9,6 @@ export const Svg = styled.svg`
 `
 
 export const Circle = styled.circle`
-  stroke: ${({theme}) => theme.primary};
+  stroke: ${({ theme }) => theme.primary};
   stroke-width: 10;
 `

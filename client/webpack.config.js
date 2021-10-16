@@ -10,6 +10,7 @@ const config = {
   entry: path.resolve(__dirname, 'src/index.jsx'),
   output: {
     path: path.resolve(__dirname, 'build'),
+    publicPath: '/',
     filename: '[contenthash].bundle.js',
     assetModuleFilename: '[name][ext]',
     clean: true

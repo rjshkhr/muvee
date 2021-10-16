@@ -15,3 +15,18 @@ export const getMoviesAction = type => {
     }
   }
 }
+
+export const getDetailsActions = movieId => {
+  return async dispatch => {
+    try {
+      const { data } = await movieService.getDetails(movieId)
+
+      dispatch({
+        type: types.SET_DETAILS,
+        payload: data
+      })
+    } catch (err) {
+      console.error(err)
+    }
+  }
+}

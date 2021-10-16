@@ -13,7 +13,7 @@ const Empty = ({ text }) => {
 }
 
 Empty.propTypes = {
-  text: PropTypes.string
+  text: PropTypes.string.isRequired
 }
 
 export default Empty

@@ -3,8 +3,7 @@ import LS from '../../utils/localStorage'
 
 const initialState = {
   user: LS.get('user'),
-  error: null,
-  isLoading: false
+  error: null
 }
 
 const authReducer = (state = initialState, { type, payload }) => {

@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
-
 import { Link } from 'react-router-dom'
 
 import Button from '../Button'
@@ -89,7 +88,7 @@ const Auth = ({ label }) => {
 }
 
 Auth.propTypes = {
-  label: PropTypes.string
+  label: PropTypes.string.isRequired
 }
 
 export default Auth

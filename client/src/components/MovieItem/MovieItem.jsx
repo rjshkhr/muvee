@@ -22,7 +22,7 @@ const MovieItem = ({ movieId, movie }) => {
   const title =
     movie.title.length > 25 ? movie.title.slice(0, 25) + '...' : movie.title
 
-  const releaseYear = movie.releaseYear || movie.release_date?.slice(0, 4)
+  const releaseYear = movie.releaseYear || movie.release_date.slice(0, 4)
   const imgPath = movie.imgPath || movie.backdrop_path
   const voteAvg = movie.voteAvg || movie.vote_average
 
@@ -44,8 +44,10 @@ const MovieItem = ({ movieId, movie }) => {
     <Styled.Container>
       <img src={`${imgURL}/${imgPath}`} alt={movie.title} />
 
-      <Styled.Title title={movie.title}>
-        {title} ({releaseYear})
+      <Styled.Title>
+        <Styled.TitleLink to={`/movie/${movieId}`} title={movie.title}>
+          {title} ({releaseYear})
+        </Styled.TitleLink>
       </Styled.Title>
 
       <Styled.IconsContainer>
@@ -54,23 +56,22 @@ const MovieItem = ({ movieId, movie }) => {
           <Styled.RatingText>{voteAvg}</Styled.RatingText>
         </Styled.Rating>
 
-        <Styled.WatchlistButton onClick={handleWatchlist}>
+        <button onClick={handleWatchlist}>
           {addedToWatchlist ? (
             <Styled.PlaylistAddedIcon aria-label='remove from watchlist' />
           ) : (
             <Styled.PlaylistAddIcon aria-label='add to watchlist' />
           )}
-        </Styled.WatchlistButton>
+        </button>
       </Styled.IconsContainer>
     </Styled.Container>
   )
 }
 
 MovieItem.propTypes = {
-  movieId: PropTypes.number,
+  movieId: PropTypes.number.isRequired,
   movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     release_date: PropTypes.string,
     releaseYear: PropTypes.string,
     vote_average: PropTypes.number,

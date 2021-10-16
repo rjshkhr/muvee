@@ -8,6 +8,7 @@ import Login from './pages/Login'
 import NotFound from './pages/NotFound'
 import Register from './pages/Register'
 import Watchlist from './pages/Watchlist'
+import MovieInfo from './pages/MovieInfo'
 
 import FontStyles from './styles/FontStyles'
 import GlobalStyles from './styles/GlobalStyles'
@@ -45,6 +46,8 @@ const App = () => {
             <Route exact path='/register'>
               {!user ? <Register /> : <Redirect to='/' />}
             </Route>
+
+            <Route exact path='/movie/:movieId' component={MovieInfo} />
 
             <Route path='*' component={NotFound} />
           </Switch>

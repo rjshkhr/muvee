@@ -13,6 +13,9 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getMoviesAction('popular'))
+  }, [dispatch])
+
+  useEffect(() => {
     dispatch(getWatchlistAction())
   }, [dispatch])
 

@@ -1,6 +1,7 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { FaStar } from 'react-icons/fa'
 import { MdPlaylistAdd, MdPlaylistAddCheck } from 'react-icons/md'
+import { Link } from 'react-router-dom'
 
 import mediaQueries from '../../styles/mediaQueries'
 
@@ -13,7 +14,7 @@ export const Container = styled.div`
   width: 12em;
 
   &:hover {
-    transform: translateY(-0.4em);
+    transform: translateY(-0.3em);
   }
 
   ${mediaQueries('sm')} {
@@ -48,34 +49,48 @@ export const StarIcon = styled(FaStar)`
   margin-right: 0.2em;
 `
 
-export const WatchlistButton = styled.button``
-
-export const PlaylistAddIcon = styled(MdPlaylistAdd)`
+const playlistIcon = css`
   font-size: 1.5rem;
 
   &:hover,
   &:focus {
     color: ${({ theme }) => theme.primary};
   }
+`
+
+export const PlaylistAddIcon = styled(MdPlaylistAdd)`
+  ${playlistIcon}
 `
 
 export const PlaylistAddedIcon = styled(MdPlaylistAddCheck)`
-  font-size: 1.5rem;
-
-  &:hover,
-  &:focus {
-    color: ${({ theme }) => theme.primary};
-  }
+  ${playlistIcon}
 `
+
 export const ReleaseYear = styled.p`
   display: inline;
   margin-left: 1em;
 `
 
 export const Title = styled.p`
-  color: ${({ theme }) => theme.text2};
   font-size: 0.9rem;
   font-weight: 600;
   margin-top: 1em;
   text-align: center;
+`
+
+export const TitleLink = styled(Link)`
+  color: ${({ theme }) => theme.text2};
+
+  &:hover,
+  &:focus {
+    color: ${({ theme }) => theme.primary};
+  }
+
+  &:active {
+    color: ${({ theme }) => theme.primary2};
+  }
+
+  &::before {
+    display: none;
+  }
 `

@@ -31,15 +31,14 @@ export const Form = styled.form`
 `
 
 export const FormGroup = styled.div`
-  margin-bottom: 2.5em;
+  margin-bottom: 2em;
   position: relative;
 `
 
 export const Input = styled.input`
   border-bottom: 2px solid ${({ theme }) => theme.border};
   font-size: inherit;
-  padding: 0.5em;
-  padding-left: 2em;
+  padding: 0.5em 0.5em 0.5em 2em;
   width: 100%;
 
   &:focus,

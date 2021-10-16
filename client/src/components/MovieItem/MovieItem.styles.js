@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { FaStar } from 'react-icons/fa'
-import { MdPlaylistAdd } from 'react-icons/md'
+import { MdPlaylistAdd, MdPlaylistAddCheck } from 'react-icons/md'
 
 import mediaQueries from '../../styles/mediaQueries'
 
@@ -51,7 +51,6 @@ export const StarIcon = styled(FaStar)`
 export const WatchlistButton = styled.button``
 
 export const PlaylistAddIcon = styled(MdPlaylistAdd)`
-  cursor: pointer;
   font-size: 1.5rem;
 
   &:hover,
@@ -60,6 +59,14 @@ export const PlaylistAddIcon = styled(MdPlaylistAdd)`
   }
 `
 
+export const PlaylistAddedIcon = styled(MdPlaylistAddCheck)`
+  font-size: 1.5rem;
+
+  &:hover,
+  &:focus {
+    color: ${({ theme }) => theme.primary};
+  }
+`
 export const ReleaseYear = styled.p`
   display: inline;
   margin-left: 1em;

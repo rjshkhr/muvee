@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import MovieList from '../../components/MovieList'
 
 import { getMoviesAction } from '../../store/movies/actions'
+import { getWatchlistAction } from '../../store/watchlist/actions'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -12,6 +13,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getMoviesAction('popular'))
+    dispatch(getWatchlistAction())
   }, [dispatch])
 
   return <MovieList movies={movies} />

@@ -24,7 +24,7 @@ const Dialog = ({ theme, toggleTheme }) => {
         </Styled.DialogItem>
 
         <Styled.DialogItem>
-          <Styled.DialogLink to='/Watchlist'>
+          <Styled.DialogLink to='/watchlist'>
             <MdMovie />
             Watchlist
           </Styled.DialogLink>

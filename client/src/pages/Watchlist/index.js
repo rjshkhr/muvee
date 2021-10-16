@@ -1,3 +1,1 @@
-import Watchlist from './Watchlist'
-
-export default Watchlist
+export { default } from './Watchlist'

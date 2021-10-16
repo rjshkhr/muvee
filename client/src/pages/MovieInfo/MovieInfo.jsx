@@ -3,11 +3,13 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouteMatch } from 'react-router-dom'
 
+import Loading from '../../components/Loading'
+
 import { getDetailsActions } from '../../store/movies/actions'
 import * as Styled from './MovieInfo.style'
 
 const MovieInfo = () => {
-  const movie = useSelector(({ movieslist }) => movieslist.details)
+  const { details, detailsLoading } = useSelector(({ movieslist }) => movieslist)
 
   const {
     params: { movieId }
@@ -19,9 +21,11 @@ const MovieInfo = () => {
     dispatch(getDetailsActions(movieId))
   }, [dispatch, movieId])
 
-  if (!movie) return null
+  if (detailsLoading) return <Loading />
 
-  return <Styled.Title>{movie.title}</Styled.Title>
+  if (!details) return null
+
+  return <Styled.Title>{details.title}</Styled.Title>
 }
 
 MovieInfo.propTypes = {

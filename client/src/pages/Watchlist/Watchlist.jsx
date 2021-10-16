@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 
 import MovieList from '../../components/MovieList'
 import NotFound from '../NotFound'
+import Loading from '../../components/Loading'
 
 import { getWatchlistAction } from '../../store/watchlist/actions'
 
@@ -13,7 +14,9 @@ const Watchlist = () => {
     dispatch(getWatchlistAction())
   }, [dispatch])
 
-  const movies = useSelector(({ watchlist }) => watchlist.movies)
+  const { movies, moviesLoading } = useSelector(({ watchlist }) => watchlist)
+
+  if (moviesLoading) return <Loading />
 
   if (!movies.length) return <NotFound text='Watchlist empty...' />
 

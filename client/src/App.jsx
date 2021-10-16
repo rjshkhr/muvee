@@ -48,11 +48,11 @@ const App = () => {
             </Route>
 
             <Route exact path='/movie/:movieId'>
-              <MovieInfo />
+              {user ? <MovieInfo /> : <Redirect to='/login' />}
             </Route>
 
             <Route exact path='/user/:userId'>
-              <UserInfo />
+              {user ? <UserInfo /> : <Redirect to='/login' />}
             </Route>
 
             <Route exact path='*'>

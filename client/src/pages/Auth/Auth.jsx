@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 import Button from '../../components/Button'
+import Loading from '../../components/Loading'
 
 import * as Styled from './Auth.styles'
 import capitalize from '../../utils/capitalize'
@@ -12,7 +13,7 @@ import { loginAction, registerAction } from '../../store/auth/actions'
 const Auth = ({ label }) => {
   const dispatch = useDispatch()
 
-  const error = useSelector(({ auth }) => auth.error)
+  const { userLoading, userError } = useSelector(({ auth }) => auth)
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -30,12 +31,14 @@ const Auth = ({ label }) => {
     setPassword('')
   }
 
+  if (userLoading) return <Loading />
+
   return (
     <Styled.Container>
       <Styled.Heading>{label}</Styled.Heading>
 
       <Styled.Form onSubmit={handleSubmit}>
-        {error && <Styled.Error>{capitalize(error)}</Styled.Error>}
+        {userError && <Styled.Error>{capitalize(userError)}</Styled.Error>}
 
         {label === 'register' && (
           <Styled.FormGroup>

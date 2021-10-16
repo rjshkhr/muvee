@@ -5,6 +5,7 @@ import LS from '../../utils/localStorage'
 export const loginAction = credentials => {
   return async dispatch => {
     try {
+      dispatch({ type: types.SET_USER_LOADING })
       const { data } = await authService.login(credentials)
 
       dispatch({
@@ -19,7 +20,7 @@ export const loginAction = credentials => {
       console.error(err)
 
       dispatch({
-        type: types.SET_ERROR,
+        type: types.SET_USER_ERROR,
         payload: err?.response?.data?.message
       })
     }
@@ -29,6 +30,7 @@ export const loginAction = credentials => {
 export const registerAction = credentials => {
   return async dispatch => {
     try {
+      dispatch({ type: types.SET_USER_LOADING })
       const { data } = await authService.register(credentials)
 
       dispatch({
@@ -43,7 +45,7 @@ export const registerAction = credentials => {
       console.error(err)
 
       dispatch({
-        type: types.SET_ERROR,
+        type: types.SET_USER_ERROR,
         payload: err?.response?.data?.message
       })
     }
@@ -53,6 +55,7 @@ export const registerAction = credentials => {
 export const logoutAction = () => {
   return async dispatch => {
     try {
+      dispatch({ type: types.SET_USER_LOADING })
       await authService.logout()
 
       dispatch({
@@ -65,6 +68,11 @@ export const logoutAction = () => {
       LS.remove('refreshToken')
     } catch (err) {
       console.error(err)
+
+      dispatch({
+        type: types.SET_USER_ERROR,
+        payload: true
+      })
     }
   }
 }

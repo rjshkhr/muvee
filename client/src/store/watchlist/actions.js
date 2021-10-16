@@ -4,6 +4,7 @@ import * as watchlistService from './services'
 export const getWatchlistAction = () => {
   return async dispatch => {
     try {
+      dispatch({ type: types.SET_WATCHLIST_LOADING })
       const { data } = await watchlistService.getWatchlist()
 
       dispatch({
@@ -12,6 +13,11 @@ export const getWatchlistAction = () => {
       })
     } catch (err) {
       console.error(err)
+
+      dispatch({
+        type: types.SET_WATCHLIST_ERROR,
+        payload: err?.response?.data?.message || true
+      })
     }
   }
 }

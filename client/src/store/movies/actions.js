@@ -4,6 +4,7 @@ import * as movieService from './services'
 export const getMoviesAction = type => {
   return async dispatch => {
     try {
+      dispatch({ type: types.SET_MOVIES_LOADING })
       const { data } = await movieService.getMovies(type)
 
       dispatch({
@@ -12,6 +13,11 @@ export const getMoviesAction = type => {
       })
     } catch (err) {
       console.error(err)
+
+      dispatch({
+        type: types.SET_MOVIES_ERROR,
+        payload: err?.response?.data?.message || true
+      })
     }
   }
 }
@@ -19,6 +25,7 @@ export const getMoviesAction = type => {
 export const getDetailsActions = movieId => {
   return async dispatch => {
     try {
+      dispatch({ type: types.SET_DETAILS_LOADING })
       const { data } = await movieService.getDetails(movieId)
 
       dispatch({
@@ -27,6 +34,11 @@ export const getDetailsActions = movieId => {
       })
     } catch (err) {
       console.error(err)
+
+      dispatch({
+        type: types.SET_DETAILS_ERROR,
+        payload: err?.response?.data?.message || true
+      })
     }
   }
 }

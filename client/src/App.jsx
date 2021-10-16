@@ -34,15 +34,15 @@ const App = () => {
               {user ? <Home /> : <Redirect to='/login' />}
             </Route>
 
-            <Route path='/watchlist'>
+            <Route exact path='/watchlist'>
               {user ? <Watchlist /> : <Redirect to='/login' />}
             </Route>
 
-            <Route path='/login'>
+            <Route exact path='/login'>
               {!user ? <Login /> : <Redirect to='/' />}
             </Route>
 
-            <Route path='/register'>
+            <Route exact path='/register'>
               {!user ? <Register /> : <Redirect to='/' />}
             </Route>
 

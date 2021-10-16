@@ -10,7 +10,7 @@ const initialState = {
 const authReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case types.SET_USER:
-      return { ...state, isLoading: false, error: null, user: payload }
+      return { ...state, error: null, user: payload }
     case types.SET_ERROR:
       return { ...state, error: payload }
     default:

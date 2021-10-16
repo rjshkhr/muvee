@@ -1,27 +1,20 @@
-import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
 
-import MovieItem from '../../components/MovieItem'
+import MovieList from '../../components/MovieList'
 
-import { getPopularAction } from '../../store/movies/actions'
-import * as Styled from './Home.styles'
+import { getMoviesAction } from '../../store/movies/actions'
 
 const Home = () => {
   const dispatch = useDispatch()
 
-  const popularMovies = useSelector(({ movies }) => movies.popular)
+  const movies = useSelector(({ movieslist }) => movieslist.movies)
 
   useEffect(() => {
-    dispatch(getPopularAction())
+    dispatch(getMoviesAction('popular'))
   }, [dispatch])
 
-  return (
-    <Styled.MovieList>
-      {popularMovies.map(movie => (
-        <MovieItem key={movie.id} movie={movie} />
-      ))}
-    </Styled.MovieList>
-  )
+  return <MovieList movies={movies} />
 }
 
 export default Home

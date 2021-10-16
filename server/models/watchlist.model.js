@@ -6,15 +6,21 @@ const watchlistSchema = new mongoose.Schema({
     required: true
   },
   movieId: {
-    type: String,
+    type: Number,
     required: true
   },
   imgPath: {
     type: String,
     required: true
   },
-  releaseYear: Number,
-  voteAvg: Number,
+  releaseYear: {
+    type: String,
+    required: true
+  },
+  voteAvg: {
+    type: Number,
+    required: true
+  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'

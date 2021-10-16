@@ -3,7 +3,7 @@ import jwtDecode from 'jwt-decode'
 
 import LS from '../../utils/localStorage'
 
-const setAuthHeader = () => {
+export const setAuthHeader = () => {
   const token = LS.get('token')
   return {
     headers: {
@@ -18,9 +18,9 @@ export const getNewToken = async () => {
   return res.data
 }
 
-const instance = axios.create()
+export const requiresToken = axios.create()
 
-instance.interceptors.request.use(
+requiresToken.interceptors.request.use(
   async config => {
     const currentDate = new Date()
     const token = LS.get('token')
@@ -47,6 +47,6 @@ export const register = async credentials => {
 }
 
 export const logout = async () => {
-  const res = await instance.delete('/api/users/logout', setAuthHeader())
+  const res = await requiresToken.delete('/api/users/logout', setAuthHeader())
   return res.data
 }

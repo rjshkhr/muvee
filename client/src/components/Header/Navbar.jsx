@@ -57,7 +57,7 @@ const Navbar = ({ theme, toggleTheme }) => {
             </Styled.NavItem>
 
             <Styled.NavItem>
-              <Styled.Link to='/register' activeClassName='selected'>
+              <Styled.Link to='/register' exact activeClassName='selected'>
                 Register
               </Styled.Link>
             </Styled.NavItem>

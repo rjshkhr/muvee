@@ -1,13 +1,13 @@
 import * as types from './constants'
 
 const initialState = {
-  popular: []
+  movies: []
 }
 
 const moviesReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case types.SET_POPULAR_MOVIES:
-      return { ...state, popular: payload }
+    case types.SET_MOVIES:
+      return { ...state, movies: payload }
     default:
       return state
   }

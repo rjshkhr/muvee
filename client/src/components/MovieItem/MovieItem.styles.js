@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import { FaStar } from 'react-icons/fa'
 import { MdPlaylistAdd, MdPlaylistAddCheck } from 'react-icons/md'
 import { Link } from 'react-router-dom'
@@ -19,6 +19,30 @@ export const Container = styled.div`
 
   ${mediaQueries('sm')} {
     width: 10em;
+  }
+`
+
+export const skeleton = keyframes`
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.6;
+  }
+`
+
+export const ImageSkeleton = styled.div`
+  background-color: ${({ theme }) => theme.body};
+  animation: ${skeleton} 0.8s ease infinite alternate;
+  border-radius: 0.5em;
+  display: ${({ imgLoading }) => (imgLoading ? 'block' : 'none')};
+  height: 90px;
+  width: 160px;
+
+  ${mediaQueries('sm')} {
+    height: 72px;
+    width: 128px;
   }
 `
 

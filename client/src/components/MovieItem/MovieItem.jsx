@@ -6,11 +6,13 @@ import {
   addWatchlistAction,
   removeWatchlistAction
 } from '../../store/watchlist/actions'
+import { useState } from 'react'
 
 const imgURL = 'https://image.tmdb.org/t/p/original'
 
 const MovieItem = ({ movieId, movie }) => {
   const dispatch = useDispatch()
+  const [imgLoading, setImgLoading] = useState(true)
 
   const moviesInWatchlist = useSelector(({ watchlist }) => watchlist.movies)
 
@@ -40,9 +42,18 @@ const MovieItem = ({ movieId, movie }) => {
       : dispatch(addWatchlistAction(movieToAdd))
   }
 
+  console.log(imgLoading)
+
   return (
     <Styled.Container>
-      <img src={`${imgURL}/${imgPath}`} alt={movie.title} />
+      <Styled.ImageSkeleton imgLoading={imgLoading} />
+      <div style={{ display: imgLoading ? 'none' : 'block' }}>
+        <img
+          src={`${imgURL}/${imgPath}`}
+          alt={movie.title}
+          onLoad={() => setImgLoading(false)}
+        />
+      </div>
 
       <Styled.Title>
         <Styled.TitleLink to={`/movie/${movieId}`} title={movie.title}>

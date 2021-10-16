@@ -7,7 +7,7 @@ import * as Styled from './Dialog.styles'
 import { logoutAction } from '../../store/auth/actions'
 
 const Dialog = ({ theme, toggleTheme }) => {
-  const user = useSelector(({auth}) => auth.user)
+  const user = useSelector(({ auth }) => auth.user)
 
   const dispatch = useDispatch()
 

@@ -3,7 +3,6 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouteMatch } from 'react-router-dom'
 
-
 import { getDetailsActions } from '../../store/movies/actions'
 import * as Styled from './MovieInfo.style'
 

@@ -48,8 +48,7 @@ export const StarIcon = styled(FaStar)`
   margin-right: 0.2em;
 `
 
-export const WatchlistButton = styled.button`
-`
+export const WatchlistButton = styled.button``
 
 export const PlaylistAddIcon = styled(MdPlaylistAdd)`
   cursor: pointer;

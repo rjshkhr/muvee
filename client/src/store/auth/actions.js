@@ -68,16 +68,3 @@ export const logoutAction = () => {
     }
   }
 }
-
-export const getNewTokenAction = () => {
-  return async () => {
-    try {
-      const { data } = await authService.getNewToken()
-
-      LS.set('token', data.token)
-      LS.set('refreshToken', data.refreshToken)
-    } catch (err) {
-      console.error(err)
-    }
-  }
-}

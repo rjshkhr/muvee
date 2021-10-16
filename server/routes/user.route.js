@@ -21,7 +21,7 @@ router.post(
   userController.login
 )
 
-router.delete('/logout', verifyToken, userController.logout)
+router.delete('/logout', userController.logout)
 
 router.post('/refresh', verifyRefreshToken, userController.regenerateToken)
 

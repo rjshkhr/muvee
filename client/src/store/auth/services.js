@@ -29,6 +29,8 @@ requiresToken.interceptors.request.use(
     if (exp * 1000 < currentDate.getTime()) {
       const { data } = await getNewToken()
       config.headers.authorization = `Bearer ${data.token}`
+      LS.set('token', data.token)
+      LS.set('refreshToken', data.refreshToken)
     }
 
     return config
@@ -47,6 +49,5 @@ export const register = async credentials => {
 }
 
 export const logout = async () => {
-  const res = await requiresToken.delete('/api/users/logout', setAuthHeader())
-  return res.data
+  await axios.delete('/api/users/logout')
 }

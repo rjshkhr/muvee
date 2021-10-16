@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
@@ -15,9 +15,14 @@ const Auth = ({ label }) => {
 
   const { userLoading, userError } = useSelector(({ auth }) => auth)
 
+  const [authLoading, setAuthLoading] = useState(true)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  useEffect(() => {
+    setAuthLoading(false)
+  }, [setAuthLoading])
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -31,7 +36,7 @@ const Auth = ({ label }) => {
     setPassword('')
   }
 
-  if (userLoading) return <Loading />
+  if (userLoading || authLoading) return <Loading />
 
   return (
     <Styled.Container>

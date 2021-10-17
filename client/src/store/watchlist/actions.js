@@ -1,5 +1,6 @@
 import * as types from './constants'
 import * as watchlistService from './services'
+import { setNotificationAction } from '../notification/actions'
 
 export const getWatchlistAction = () => {
   return async dispatch => {
@@ -31,22 +32,40 @@ export const addWatchlistAction = movie => {
         type: types.ADD_WATCHLIST,
         payload: data
       })
+
+      dispatch(setNotificationAction(`${movie.title} added to the watchlist`))
     } catch (err) {
       console.error(err)
+      dispatch(
+        setNotificationAction(
+          `Could not add ${movie.title} to the watchlist`,
+          'error'
+        )
+      )
     }
   }
 }
 
-export const removeWatchlistAction = id => {
+export const removeWatchlistAction = movie => {
   return async dispatch => {
     try {
-      const { data } = await watchlistService.removeWatchlist(id)
+      const { data } = await watchlistService.removeWatchlist(movie.id)
 
       dispatch({
         type: types.REMOVE_WATCHLIST,
         payload: data
       })
+
+      dispatch(
+        setNotificationAction(`${movie.title} removed from the watchlist`)
+      )
     } catch (err) {
+      dispatch(
+        setNotificationAction(
+          `Could not remove ${movie.title} from the watchlist`,
+          'error'
+        )
+      )
       console.error(err)
     }
   }

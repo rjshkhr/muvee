@@ -14,9 +14,13 @@ const Watchlist = () => {
     dispatch(getWatchlistAction())
   }, [dispatch])
 
-  const { movies, moviesLoading } = useSelector(({ watchlist }) => watchlist)
+  const { movies, moviesLoading, moviesError } = useSelector(
+    ({ watchlist }) => watchlist
+  )
 
   if (moviesLoading) return <Loading />
+
+  if (moviesError) return <NotFound text='Something went wrong!' />
 
   if (!movies.length) return <NotFound text='Watchlist empty...' />
 

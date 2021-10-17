@@ -7,7 +7,7 @@ import Loading from '../../components/Loading'
 import * as Styled from './UserInfo.styles'
 
 const UserInfo = () => {
-  const { user, userLoading } = useSelector(({ auth }) => auth)
+  const { user, userLoading, userError } = useSelector(({ auth }) => auth)
 
   const {
     params: { userId }
@@ -18,6 +18,8 @@ const UserInfo = () => {
   }
 
   if (userLoading) return <Loading />
+
+  if (userError) return <NotFound text='Something went wrong!' />
 
   return <Styled.Title>{user.name}</Styled.Title>
 }

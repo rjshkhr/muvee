@@ -3,6 +3,7 @@ import { ThemeProvider } from 'styled-components'
 import { useSelector } from 'react-redux'
 
 import Header from './components/Header'
+import Notification from './components/Notification'
 import NotFound from './pages/NotFound'
 import Home from './pages/Home'
 import Auth from './pages/Auth'
@@ -28,6 +29,7 @@ const App = () => {
         <GlobalStyles />
 
         <Header theme={theme} toggleTheme={toggleTheme} />
+        <Notification />
 
         <Styled.Main>
           <Switch>

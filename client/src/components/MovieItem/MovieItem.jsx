@@ -38,11 +38,9 @@ const MovieItem = ({ movieId, movie }) => {
     }
 
     addedToWatchlist
-      ? dispatch(removeWatchlistAction(addedToWatchlist.id))
+      ? dispatch(removeWatchlistAction(addedToWatchlist))
       : dispatch(addWatchlistAction(movieToAdd))
   }
-
-  console.log(imgLoading)
 
   return (
     <Styled.Container>

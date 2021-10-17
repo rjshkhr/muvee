@@ -39,6 +39,12 @@ const GlobalStyles = createGlobalStyle`
     width: 100%;
   }
 
+  i {
+    &:hover {
+      background-color: red;
+    }
+  }
+
   a {
     color: ${({ theme }) => theme.primary};
     padding: 0 0 0.2em 0;

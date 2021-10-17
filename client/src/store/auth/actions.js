@@ -1,6 +1,7 @@
 import * as types from './constants'
 import * as authService from './services'
 import LS from '../../utils/localStorage'
+import { setNotificationAction } from '../notification/actions'
 
 export const loginAction = credentials => {
   return async dispatch => {
@@ -16,6 +17,8 @@ export const loginAction = credentials => {
       LS.set('user', data.user)
       LS.set('token', data.token)
       LS.set('refreshToken', data.refreshToken)
+
+      dispatch(setNotificationAction(`Welcome ${data.user.name}`))
     } catch (err) {
       console.error(err)
 
@@ -53,10 +56,12 @@ export const registerAction = credentials => {
 }
 
 export const logoutAction = () => {
-  return async dispatch => {
+  return async (dispatch, getState) => {
     try {
       dispatch({ type: types.SET_USER_LOADING })
       await authService.logout()
+
+      dispatch(setNotificationAction(`Goodbye ${getState().auth.user.name}`))
 
       dispatch({
         type: types.SET_USER,
@@ -68,6 +73,7 @@ export const logoutAction = () => {
       LS.remove('refreshToken')
     } catch (err) {
       console.error(err)
+      dispatch(setNotificationAction('Something went wrong!', 'error'))
 
       dispatch({
         type: types.SET_USER_ERROR,

@@ -14,8 +14,18 @@ export const setAuthHeader = () => {
 
 export const getNewToken = async () => {
   const refreshToken = LS.get('refreshToken')
-  const res = await axios.post('/api/users/refresh', { refreshToken })
-  return res.data
+  try {
+    const res = await axios.post('/api/users/refresh', { refreshToken })
+    return res.data
+  } catch (err) {
+    console.log(err)
+
+    if (err?.response?.status === 403) {
+      LS.remove('user')
+      LS.remove('token')
+      LS.remove('refreshToken')
+    }
+  }
 }
 
 export const requiresToken = axios.create()

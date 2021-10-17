@@ -9,6 +9,7 @@ export const lightTheme = {
   errorText: '#c1364a',
   errorBody: 'rgba(255, 0, 0, 0.1)',
   yellow: '#d98912',
+  green: '#008760',
   shadowBottom: 'rgba(0, 0, 0, 0.1) 0px 12px 8px -12px',
   shadow: '0 2px 4px rgb(0 0 0 / 10%)'
 }
@@ -24,6 +25,7 @@ export const darkTheme = {
   errorText: '#ff4662',
   errorBody: 'rgba(185, 65, 65, 0.1)',
   yellow: '#e7d645',
+  green: '#2aaba0',
   shadowBottom: 'rgba(0, 0, 0, 0.3) 0px 4px 2px -4px',
   shadow: 'rgba(0, 0, 0, 0.1) 0px 3px 5px'
 }

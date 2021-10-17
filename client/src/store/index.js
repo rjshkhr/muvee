@@ -4,11 +4,13 @@ import thunk from 'redux-thunk'
 import authReducer from './auth/reducer'
 import moviesReducer from './movies/reducer'
 import watchlistReducer from './watchlist/reducer'
+import notificationReducer from './notification/reducer'
 
 const rootReducer = combineReducers({
   auth: authReducer,
   movieslist: moviesReducer,
-  watchlist: watchlistReducer
+  watchlist: watchlistReducer,
+  notification: notificationReducer
 })
 
 const store = createStore(rootReducer, applyMiddleware(thunk))

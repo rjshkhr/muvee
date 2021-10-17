@@ -4,12 +4,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useRouteMatch } from 'react-router-dom'
 
 import Loading from '../../components/Loading'
+import NotFound from '../NotFound'
 
 import { getDetailsActions } from '../../store/movies/actions'
 import * as Styled from './MovieInfo.style'
 
 const MovieInfo = () => {
-  const { details, detailsLoading } = useSelector(
+  const { details, detailsLoading, detailsError } = useSelector(
     ({ movieslist }) => movieslist
   )
 
@@ -24,6 +25,8 @@ const MovieInfo = () => {
   }, [dispatch, movieId])
 
   if (detailsLoading) return <Loading />
+
+  if (detailsError) return <NotFound text='Something went wrong!' />
 
   if (!details) return null
 

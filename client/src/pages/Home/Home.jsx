@@ -28,7 +28,7 @@ const Home = () => {
     dispatch(getWatchlistAction())
   }, [dispatch])
 
-  const handlePageChange = ({selected}) => {
+  const handlePageChange = ({ selected }) => {
     dispatch(getMoviesAction(movieType, selected + 1))
   }
 

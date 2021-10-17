@@ -6,7 +6,7 @@ import mediaQueries from '../../styles/mediaQueries'
 const center = css`
   display: flex;
   justify-content: center;
-    align-items: center;
+  align-items: center;
 `
 
 export const MovieTypeContainer = styled.div`
@@ -23,10 +23,10 @@ export const MoviePaginateContainer = styled.div`
     ${center}
     gap: 0.5em;
 
-  ${mediaQueries('sm')} {
-    gap: 0.2em;
-    font-size: 0.8rem;
-  }
+    ${mediaQueries('sm')} {
+      gap: 0.2em;
+      font-size: 0.8rem;
+    }
 
     li {
       ${center}

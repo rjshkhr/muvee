@@ -1,15 +1,20 @@
 import * as types from './constants'
 import * as movieService from './services'
 
-export const getMoviesAction = type => {
+export const getMoviesAction = (type, page) => {
   return async dispatch => {
     try {
       dispatch({ type: types.SET_MOVIES_LOADING })
-      const { data } = await movieService.getMovies(type)
+      const { data } = await movieService.getMovies(type, page)
 
       dispatch({
         type: types.SET_MOVIES,
-        payload: data.results
+        payload: {
+          page,
+          movies: data.results,
+          totalPages: data.total_pages,
+          totalResults: data.total_results
+        }
       })
     } catch (err) {
       console.error(err)

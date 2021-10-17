@@ -18,7 +18,7 @@ export const loginAction = credentials => {
       LS.set('token', data.token)
       LS.set('refreshToken', data.refreshToken)
 
-      dispatch(setNotificationAction(`Welcome ${data.user.name}`))
+      dispatch(setNotificationAction(`Welcome ${data.user.name}`, 'info'))
     } catch (err) {
       console.error(err)
 
@@ -44,6 +44,8 @@ export const registerAction = credentials => {
       LS.set('user', data.user)
       LS.set('token', data.token)
       LS.set('refreshToken', data.refreshToken)
+
+      dispatch(setNotificationAction(`Welcome ${data.user.name}`, 'info'))
     } catch (err) {
       console.error(err)
 
@@ -61,7 +63,9 @@ export const logoutAction = () => {
       dispatch({ type: types.SET_USER_LOADING })
       await authService.logout()
 
-      dispatch(setNotificationAction(`Goodbye ${getState().auth.user.name}`))
+      dispatch(
+        setNotificationAction(`Goodbye ${getState().auth.user.name}`, 'info')
+      )
 
       dispatch({
         type: types.SET_USER,

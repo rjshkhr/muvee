@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components'
 import { MdOutlineError, MdInfo, MdOutlineDone } from 'react-icons/md'
 
+import mediaQueries from '../../styles/mediaQueries'
+
 export const Container = styled.div`
   position: fixed;
   top: 1em;
@@ -21,11 +23,23 @@ export const Container = styled.div`
       : status === 'info'
       ? props => props.theme.primary
       : props => props.theme.green}};
+
+  ${mediaQueries('sm')} {
+    margin: 0 auto;
+    botttom: 0;
+    right: 0;
+    left: 0;
+    width: 95%;
+  }
 `
 
 export const Text = styled.p`
-  flex-basis: 16em;
+  flex-basis: 90%;
   line-height: 1.6;
+
+  ${mediaQueries('sm')} {
+    font-size: 0.9rem;
+  }
 `
 
 const icon = css`
@@ -39,7 +53,7 @@ export const InfoIcon = styled(MdInfo)`
 
 export const SuccessIcon = styled(MdOutlineDone)`
   ${icon}
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   border-radius: 50%;
   padding: 0.2em;
   color: #fff;

@@ -4,6 +4,9 @@ const initialState = {
   movies: [],
   moviesLoading: false,
   moviesError: false,
+  page: null,
+  totalPages: null,
+  totalResults: null,
   details: null,
   detailsLoading: false,
   detailsError: null
@@ -14,9 +17,9 @@ const moviesReducer = (state = initialState, { type, payload }) => {
     case types.SET_MOVIES:
       return {
         ...state,
+        ...payload,
         moviesLoading: false,
-        moviesError: null,
-        movies: payload
+        moviesError: null
       }
 
     case types.SET_MOVIES_LOADING:

@@ -75,7 +75,9 @@ export const StarIcon = styled(FaStar)`
 
 const playlistIcon = css`
   font-size: 1.5rem;
+`
 
+export const PlaylistIconButton = styled.button`
   &:hover,
   &:focus {
     color: ${({ theme }) => theme.primary};

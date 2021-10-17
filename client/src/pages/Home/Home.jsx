@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
+import ReactPaginate from 'react-paginate'
 
 import MovieList from '../../components/MovieList'
 import Loading from '../../components/Loading'
@@ -13,9 +14,7 @@ import * as Styled from './Home.styles'
 const Home = () => {
   const dispatch = useDispatch()
 
-  const { movies, moviesLoading, moviesError } = useSelector(
-    ({ movieslist }) => movieslist
-  )
+  const moviesList = useSelector(({ movieslist }) => movieslist)
 
   const moviesTypes = ['popular', 'toprated', 'nowplaying', 'upcoming']
 
@@ -29,11 +28,15 @@ const Home = () => {
     dispatch(getWatchlistAction())
   }, [dispatch])
 
-  if (moviesLoading) return <Loading />
+  const handlePageChange = ({selected}) => {
+    dispatch(getMoviesAction(movieType, selected + 1))
+  }
 
-  if (moviesError) return <NotFound text='Something went wrong!' />
+  if (moviesList.moviesLoading) return <Loading />
 
-  if (!movies.length) return null
+  if (moviesList.moviesError) return <NotFound text='Something went wrong!' />
+
+  if (!moviesList.movies.length) return null
 
   return (
     <>
@@ -48,7 +51,23 @@ const Home = () => {
           </Button>
         ))}
       </Styled.MovieTypeContainer>
-      <MovieList movies={movies} />
+
+      <MovieList movies={moviesList.movies} />
+
+      <Styled.MoviePaginateContainer>
+        <ReactPaginate
+          pageCount={moviesList.totalPages}
+          pageRangeDisplayed={3}
+          marginPagesDisplayed={1}
+          previousLabel={<Styled.PrevPageIcon />}
+          nextLabel={<Styled.NextPageIcon />}
+          onPageChange={handlePageChange}
+          containerClassName={'pagination'}
+          activeClassName={'active'}
+          disabledClassName={'disabled'}
+          forcePage={moviesList.page - 1}
+        />
+      </Styled.MoviePaginateContainer>
     </>
   )
 }

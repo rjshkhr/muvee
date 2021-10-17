@@ -65,13 +65,13 @@ const MovieItem = ({ movieId, movie }) => {
           <Styled.RatingText>{voteAvg}</Styled.RatingText>
         </Styled.Rating>
 
-        <button onClick={handleWatchlist}>
+        <Styled.PlaylistIconButton onClick={handleWatchlist}>
           {addedToWatchlist ? (
             <Styled.PlaylistAddedIcon aria-label='remove from watchlist' />
           ) : (
             <Styled.PlaylistAddIcon aria-label='add to watchlist' />
           )}
-        </button>
+        </Styled.PlaylistIconButton>
       </Styled.IconsContainer>
     </Styled.Container>
   )

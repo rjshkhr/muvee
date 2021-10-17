@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-export const getMovies = async type => {
-  const res = await axios.get(`/api/movies/${type}`)
+export const getMovies = async (type, page = 1) => {
+  const res = await axios.get(`/api/movies/${type}?page=${page}`)
   return res.data
 }
 

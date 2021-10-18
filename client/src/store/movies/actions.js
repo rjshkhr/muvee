@@ -10,7 +10,7 @@ export const getMoviesAction = (type, page) => {
       dispatch({
         type: types.SET_MOVIES,
         payload: {
-          page,
+          page: data.page,
           movies: data.results,
           totalPages: data.total_pages,
           totalResults: data.total_results

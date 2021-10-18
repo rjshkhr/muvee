@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import * as Styled from './MovieItem.styles'
 import {
@@ -22,7 +23,7 @@ const MovieItem = ({ movieId, movie }) => {
   })
 
   const title =
-    movie.title.length > 25 ? movie.title.slice(0, 25) + '...' : movie.title
+    movie.title.length > 18 ? movie.title.slice(0, 18) + '...' : movie.title
 
   const releaseYear = movie.releaseYear || movie.release_date.slice(0, 4)
   const imgPath = movie.imgPath || movie.backdrop_path
@@ -44,20 +45,24 @@ const MovieItem = ({ movieId, movie }) => {
 
   return (
     <Styled.Container>
-      <Styled.ImageSkeleton imgLoading={imgLoading} />
-      <div style={{ display: imgLoading ? 'none' : 'block' }}>
-        <img
-          src={`${imgURL}/${imgPath}`}
-          alt={movie.title}
-          onLoad={() => setImgLoading(false)}
-        />
-      </div>
+      <Link to={`/movie/${movieId}`}>
+        <Styled.ImageSkeleton imgLoading={imgLoading} />
+        <div style={{ display: imgLoading ? 'none' : 'block' }}>
+          <img
+            src={`${imgURL}/${imgPath}`}
+            alt={movie.title}
+            onLoad={() => setImgLoading(false)}
+          />
+        </div>
+      </Link>
 
       <Styled.Title>
         <Styled.TitleLink to={`/movie/${movieId}`} title={movie.title}>
-          {title} ({releaseYear})
+          {title}
         </Styled.TitleLink>
       </Styled.Title>
+
+      <Styled.ReleaseYear>{releaseYear}</Styled.ReleaseYear>
 
       <Styled.IconsContainer>
         <Styled.Rating>

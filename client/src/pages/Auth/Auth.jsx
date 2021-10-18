@@ -31,9 +31,11 @@ const Auth = ({ label }) => {
       ? dispatch(registerAction({ name, email, password }))
       : dispatch(loginAction({ email, password }))
 
-    setName('')
-    setEmail('')
-    setPassword('')
+    if (!userError) {
+      setName('')
+      setEmail('')
+      setPassword('')
+    }
   }
 
   if (userLoading || authLoading) return <Loading />

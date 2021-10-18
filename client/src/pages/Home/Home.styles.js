@@ -38,7 +38,7 @@ export const MoviePaginateContainer = styled.div`
       &:hover,
       &:focus {
         background-color: ${({ theme }) => theme.primary};
-        color: ${({ theme }) => theme.body};
+        color: #fff;
       }
 
       ${mediaQueries('xs')} {

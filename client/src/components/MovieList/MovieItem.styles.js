@@ -11,14 +11,10 @@ export const Container = styled.div`
   box-shadow: ${({ theme }) => theme.shadow};
   padding: 1em;
   transition: transform 0.1s linear;
-  width: 12em;
+  width: 15em;
 
   &:hover {
     transform: translateY(-0.3em);
-  }
-
-  ${mediaQueries('sm')} {
-    width: 10em;
   }
 `
 
@@ -37,8 +33,8 @@ export const ImageSkeleton = styled.div`
   animation: ${skeleton} 0.8s ease infinite alternate;
   border-radius: 0.5em;
   display: ${({ imgLoading }) => (imgLoading ? 'block' : 'none')};
-  height: 90px;
-  width: 160px;
+  height: 117px;
+  width: 208px;
 
   ${mediaQueries('sm')} {
     height: 72px;
@@ -49,7 +45,7 @@ export const ImageSkeleton = styled.div`
 export const IconsContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 1em;
+  margin-top: 1.4em;
 `
 
 export const Rating = styled.div`
@@ -92,15 +88,10 @@ export const PlaylistAddedIcon = styled(MdPlaylistAddCheck)`
   ${playlistIcon}
 `
 
-export const ReleaseYear = styled.p`
-  display: inline;
-  margin-left: 1em;
-`
-
 export const Title = styled.p`
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 600;
-  margin-top: 1em;
+  margin-top: 1.5em;
   text-align: center;
 `
 
@@ -119,4 +110,11 @@ export const TitleLink = styled(Link)`
   &::before {
     display: none;
   }
+`
+
+export const ReleaseYear = styled.p`
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 0.5em;
+  text-align: center;
 `

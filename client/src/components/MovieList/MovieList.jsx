@@ -1,6 +1,6 @@
 import PropTypes, { object } from 'prop-types'
 
-import MovieItem from '../MovieItem'
+import MovieItem from './MovieItem'
 
 import * as Styled from './MovieList.styles'
 

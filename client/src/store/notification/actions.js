@@ -1,10 +1,20 @@
 import * as types from './constants'
 
-export const setNotificationAction = (message, status = 'success') => ({
-  type: types.SET_NOTIFICATION,
-  payload: { message, status }
-})
+let timeout = null
 
-export const removeNotificationAction = () => ({
-  type: types.REMOVE_NOTIFICATION
-})
+export const setNotificationAction = (message, status = 'success') => {
+  clearTimeout(timeout)
+
+  return async dispatch => {
+    dispatch({
+      type: types.SET_NOTIFICATION,
+      payload: { message, status }
+    })
+
+    timeout = setTimeout(() => {
+      dispatch({
+        type: types.REMOVE_NOTIFICATION
+      })
+    }, 5000)
+  }
+}

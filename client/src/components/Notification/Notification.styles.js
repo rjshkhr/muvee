@@ -1,7 +1,17 @@
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import { MdOutlineError, MdInfo, MdOutlineDone } from 'react-icons/md'
 
 import mediaQueries from '../../styles/mediaQueries'
+
+const notificationAnim = keyframes`
+  from {
+    right: -2em;
+  }
+
+  to {
+    right: 2em;
+  }
+`
 
 export const Container = styled.div`
   position: fixed;
@@ -16,6 +26,7 @@ export const Container = styled.div`
   box-shadow: ${({ theme }) => theme.shadow};
   border-radius: 0.4em;
   padding: 1em;
+  animation: ${notificationAnim} 0.3s;
 
   color: ${({ status }) =>
     status === 'error'

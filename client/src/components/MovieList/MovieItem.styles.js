@@ -3,15 +3,13 @@ import { FaStar } from 'react-icons/fa'
 import { MdPlaylistAdd, MdPlaylistAddCheck } from 'react-icons/md'
 import { Link } from 'react-router-dom'
 
-import mediaQueries from '../../styles/mediaQueries'
-
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.body2};
   border-radius: 1em;
   box-shadow: ${({ theme }) => theme.shadow};
   padding: 1em;
   transition: transform 0.1s linear;
-  width: 15em;
+  width: 14em;
 
   &:hover {
     transform: translateY(-0.3em);
@@ -33,19 +31,14 @@ export const ImageSkeleton = styled.div`
   animation: ${skeleton} 0.8s ease infinite alternate;
   border-radius: 0.5em;
   display: ${({ imgLoading }) => (imgLoading ? 'block' : 'none')};
-  height: 117px;
-  width: 208px;
-
-  ${mediaQueries('sm')} {
-    height: 72px;
-    width: 128px;
-  }
+  height: 108px;
+  width: 192px;
 `
 
 export const IconsContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 1.4em;
+  margin-top: 1em;
 `
 
 export const Rating = styled.div`
@@ -91,7 +84,7 @@ export const PlaylistAddedIcon = styled(MdPlaylistAddCheck)`
 export const Title = styled.p`
   font-size: 1rem;
   font-weight: 600;
-  margin-top: 1.5em;
+  margin-top: 1em;
   text-align: center;
 `
 
@@ -115,6 +108,6 @@ export const TitleLink = styled(Link)`
 export const ReleaseYear = styled.p`
   font-size: 0.9rem;
   font-weight: 600;
-  margin-top: 0.5em;
+  margin-top: 0.4em;
   text-align: center;
 `

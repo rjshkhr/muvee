@@ -1,5 +1,15 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { Link } from 'react-router-dom'
+
+const dialogAnim = keyframes`
+  from {
+    right: -3em;
+  }
+
+  to {
+    right: 0.5em;
+  }
+`
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.body2};
@@ -10,6 +20,7 @@ export const Container = styled.div`
   right: 0;
   top: 6em;
   z-index: 2;
+  animation: ${dialogAnim} 0.2s;
 `
 
 export const DialogList = styled.ul`

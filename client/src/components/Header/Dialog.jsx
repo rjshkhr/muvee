@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 
 import * as Styled from './Dialog.styles'
 import { logoutAction } from '../../store/auth/actions'
+import { setNotificationAction } from '../../store/notification/actions'
 
 const Dialog = ({ theme, toggleTheme }) => {
   const user = useSelector(({ auth }) => auth.user)
@@ -13,6 +14,12 @@ const Dialog = ({ theme, toggleTheme }) => {
 
   const handleLogout = () => {
     dispatch(logoutAction())
+  }
+
+  const handleToggleTheme = () => {
+    toggleTheme()
+    const mode = theme === 'dark' ? 'light' : 'dark'
+    dispatch(setNotificationAction(`Enabled ${mode} mode`, 'info'))
   }
 
   return (
@@ -33,7 +40,7 @@ const Dialog = ({ theme, toggleTheme }) => {
         </Styled.DialogItem>
 
         <Styled.DialogItem>
-          <Styled.DialogButton onClick={toggleTheme}>
+          <Styled.DialogButton onClick={handleToggleTheme}>
             <MdDarkMode />
             {theme === 'dark' ? 'Disable' : 'Enable'} Dark Mode
           </Styled.DialogButton>

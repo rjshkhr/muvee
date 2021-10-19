@@ -74,11 +74,11 @@ export const ThemeToggleButton = styled.button`
 export const ProfileIconButton = styled.button`
   ${center}
   background-color: ${({ theme }) => theme.primary};
-  border-radius: 0.3em;
+  border-radius: 0.5em;
   color: #fff;
   font-size: 1.5rem;
   margin-left: 0.5em;
-  padding: 0.2em;
+  padding: 0.3em;
 
   &:hover,
   &:focus {

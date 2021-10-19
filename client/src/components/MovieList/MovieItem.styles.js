@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.body2};
-  border-radius: 1em;
+  border-radius: 1.5em;
   box-shadow: ${({ theme }) => theme.shadow};
   padding: 1em;
   transition: transform 0.1s linear;
@@ -29,7 +29,7 @@ export const skeleton = keyframes`
 export const ImageSkeleton = styled.div`
   background-color: ${({ theme }) => theme.body};
   animation: ${skeleton} 0.8s ease infinite alternate;
-  border-radius: 0.5em;
+  border-radius: 1em;
   display: ${({ imgLoading }) => (imgLoading ? 'block' : 'none')};
   height: 108px;
   width: 192px;
@@ -44,7 +44,7 @@ export const IconsContainer = styled.div`
 export const Rating = styled.div`
   align-items: center;
   border: 2px solid ${({ theme }) => theme.yellow};
-  border-radius: 0.5em;
+  border-radius: 1em;
   display: inline-flex;
   justify-content: center;
   padding: 0.1em 0.5em;
@@ -106,7 +106,8 @@ export const TitleLink = styled(Link)`
 `
 
 export const ReleaseYear = styled.p`
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+  font-style: italic;
   font-weight: 600;
   margin-top: 0.4em;
   text-align: center;

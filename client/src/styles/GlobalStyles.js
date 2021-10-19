@@ -34,15 +34,10 @@ const GlobalStyles = createGlobalStyle`
   }
 
   img {
+    display: inline-block;
     object-fit: contain;
-    border-radius: 0.5em;
+    border-radius: 1em;
     width: 100%;
-  }
-
-  i {
-    &:hover {
-      background-color: red;
-    }
   }
 
   a {

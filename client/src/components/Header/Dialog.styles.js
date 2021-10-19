@@ -7,7 +7,7 @@ const dialogAnim = keyframes`
   }
 
   to {
-    right: 0.5em;
+    right: 0;
   }
 `
 

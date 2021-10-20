@@ -9,3 +9,18 @@ export const getDetails = async movieId => {
   const res = await axios.get(`/api/movies/${movieId}/details`)
   return res.data
 }
+
+export const getReviews = async movieId => {
+  const res = await axios.get(`/api/movies/${movieId}/reviews`)
+  return res.data
+}
+
+export const getSimilar = async movieId => {
+  const res = await axios.get(`/api/movies/${movieId}/similar`)
+  return res.data
+}
+
+export const getRecommended = async movieId => {
+  const res = await axios.get(`/api/movies/${movieId}/recommended`)
+  return res.data
+}

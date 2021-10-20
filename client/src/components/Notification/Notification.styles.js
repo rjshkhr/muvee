@@ -33,7 +33,7 @@ export const Container = styled.div`
       ? props => props.theme.errorText
       : status === 'info'
       ? props => props.theme.primary
-      : props => props.theme.green}};
+      : props => props.theme.greenText}};
 
   ${mediaQueries('sm')} {
     margin: 0 auto;
@@ -73,8 +73,8 @@ export const SuccessIcon = styled(MdOutlineDone)`
     status === 'error'
       ? props => props.theme.errorText
       : status === 'info'
-      ? props => props.theme.yellow
-      : props => props.theme.green}};
+      ? props => props.theme.yellowText
+      : props => props.theme.greenText}};
 `
 
 export const ErrorIcon = styled(MdOutlineError)`

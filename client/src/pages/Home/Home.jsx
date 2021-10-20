@@ -21,7 +21,7 @@ const Home = () => {
   const [movieType, setMovieType] = useState('popular')
 
   useEffect(() => {
-    dispatch(getMoviesAction(movieType))
+    dispatch(getMoviesAction(movieType, 1))
   }, [dispatch, movieType])
 
   useEffect(() => {
@@ -57,7 +57,7 @@ const Home = () => {
       <Styled.MoviePaginateContainer>
         <ReactPaginate
           pageCount={moviesList.totalPages}
-          pageRangeDisplayed={3}
+          pageRangeDisplayed={2}
           marginPagesDisplayed={1}
           previousLabel={<Styled.PrevPageIcon />}
           nextLabel={<Styled.NextPageIcon />}

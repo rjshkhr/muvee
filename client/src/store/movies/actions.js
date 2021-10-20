@@ -47,3 +47,45 @@ export const getDetailsActions = movieId => {
     }
   }
 }
+
+export const getReviewsAction = movieId => {
+  return async dispatch => {
+    try {
+      const { data } = await movieService.getReviews(movieId)
+      dispatch({
+        type: types.SET_REVIEWS,
+        payload: data.results
+      })
+    } catch (err) {
+      console.error(err)
+    }
+  }
+}
+
+export const getRecommendedAction = movieId => {
+  return async dispatch => {
+    try {
+      const { data } = await movieService.getRecommended(movieId)
+      dispatch({
+        type: types.SET_RECOMMENDED,
+        payload: data.results
+      })
+    } catch (err) {
+      console.error(err)
+    }
+  }
+}
+
+export const getSimilarAction = movieId => {
+  return async dispatch => {
+    try {
+      const { data } = await movieService.getSimilar(movieId)
+      dispatch({
+        type: types.SET_SIMILAR,
+        payload: data.results
+      })
+    } catch (err) {
+      console.error(err)
+    }
+  }
+}

@@ -3,13 +3,19 @@ import { FaStar } from 'react-icons/fa'
 import { MdPlaylistAdd, MdPlaylistAddCheck } from 'react-icons/md'
 import { Link } from 'react-router-dom'
 
+import mediaQueries from '../../styles/mediaQueries'
+
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.body2};
   border-radius: 1.5em;
   box-shadow: ${({ theme }) => theme.shadow};
   padding: 1em;
   transition: transform 0.1s linear;
-  width: 14em;
+  flex: 0 0 12em;
+
+  ${mediaQueries('sm')} {
+    flex: 0 0 10em;
+  }
 
   &:hover {
     transform: translateY(-0.3em);
@@ -31,19 +37,24 @@ export const ImageSkeleton = styled.div`
   animation: ${skeleton} 0.8s ease infinite alternate;
   border-radius: 1em;
   display: ${({ imgLoading }) => (imgLoading ? 'block' : 'none')};
-  height: 108px;
-  width: 192px;
+  height: 90px;
+  width: 160px;
+
+  ${mediaQueries('sm')} {
+    height: 72px;
+    width: 128px;
+  }
 `
 
 export const IconsContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 1em;
+  margin-top: 0.8em;
 `
 
 export const Rating = styled.div`
   align-items: center;
-  border: 2px solid ${({ theme }) => theme.yellow};
+  background-color: ${({ theme }) => theme.yellowBody};
   border-radius: 1em;
   display: inline-flex;
   justify-content: center;
@@ -51,13 +62,15 @@ export const Rating = styled.div`
 `
 
 export const RatingText = styled.div`
-  color: ${({ theme }) => theme.text2};
+  color: ${({ theme }) => theme.yellowText};
+  background: transparent;
   font-size: 0.8rem;
   font-weight: 600;
 `
 
 export const StarIcon = styled(FaStar)`
-  color: ${({ theme }) => theme.yellow};
+  color: ${({ theme }) => theme.yellowText};
+  background: transparent;
   font-size: 0.8rem;
   margin-right: 0.2em;
 `
@@ -84,8 +97,12 @@ export const PlaylistAddedIcon = styled(MdPlaylistAddCheck)`
 export const Title = styled.p`
   font-size: 1rem;
   font-weight: 600;
-  margin-top: 1em;
+  margin-top: 0.8em;
   text-align: center;
+
+  ${mediaQueries('sm')} {
+    font-size: 0.9rem;
+  }
 `
 
 export const TitleLink = styled(Link)`
@@ -106,6 +123,7 @@ export const TitleLink = styled(Link)`
 `
 
 export const ReleaseYear = styled.p`
+  color: ${({ theme }) => theme.text3};
   font-size: 0.8rem;
   font-style: italic;
   font-weight: 600;

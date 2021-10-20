@@ -76,7 +76,6 @@ export const Text = styled.p`
 export const Error = styled.p`
   align-items: center;
   background-color: ${({ theme }) => theme.errorBody};
-  border: 2px solid ${({ theme }) => theme.errorText};
   border-radius: 0.5em;
   color: ${({ theme }) => theme.errorText};
   display: flex;

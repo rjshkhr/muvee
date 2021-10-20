@@ -23,11 +23,11 @@ const MovieItem = ({ movieId, movie }) => {
   })
 
   const title =
-    movie.title.length > 18 ? movie.title.slice(0, 18) + '...' : movie.title
+    movie.title.length > 12 ? movie.title.slice(0, 12) + '...' : movie.title
 
   const releaseYear = movie.releaseYear || movie.release_date.slice(0, 4)
   const imgPath = movie.imgPath || movie.backdrop_path
-  const voteAvg = movie.voteAvg || movie.vote_average
+  const voteAvg = movie.voteAvg || movie.vote_average.toFixed(1)
 
   const handleWatchlist = () => {
     const movieToAdd = {

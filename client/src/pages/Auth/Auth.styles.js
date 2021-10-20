@@ -2,6 +2,8 @@ import styled, { css } from 'styled-components'
 import { MdLock, MdOutlineEmail } from 'react-icons/md'
 import { BiUser } from 'react-icons/bi'
 
+import Button from '../../components/Button'
+
 import mediaQueries from '../../styles/mediaQueries'
 
 export const Container = styled.div`
@@ -83,4 +85,10 @@ export const Error = styled.p`
   justify-content: center;
   margin-bottom: 2em;
   text-align: center;
+`
+
+export const GuestLoginButton = styled(Button)`
+  margin-top: 0.5em;
+  text-transform: initial;
+  font-weight: 500;
 `

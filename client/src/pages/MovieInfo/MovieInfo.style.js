@@ -117,6 +117,8 @@ export const TimeIcon = styled(MdAccessTimeFilled)`
 
 export const GenreList = styled.ul`
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin-top: 1em;
   gap: 0.5em;
 `

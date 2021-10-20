@@ -38,6 +38,12 @@ const Auth = ({ label }) => {
     }
   }
 
+  const handleGuestLogin = () => {
+    dispatch(loginAction({ email: 'test@email.com', password: 'testaccount' }))
+    setEmail('')
+    setPassword('')
+  }
+
   if (userLoading || authLoading) return <Loading />
 
   return (
@@ -88,9 +94,18 @@ const Auth = ({ label }) => {
             Already have an account? <Link to='/login'>Log In</Link>
           </Styled.Text>
         ) : (
-          <Styled.Text>
-            Don&apos;t have an account? <Link to='/register'>Register</Link>
-          </Styled.Text>
+          <>
+            <Styled.Text>
+              Don&apos;t have an account? <Link to='/register'>Register</Link>
+            </Styled.Text>
+            <Styled.GuestLoginButton
+              onClick={handleGuestLogin}
+              fullWidth
+              noBackground
+            >
+              Or log in as Guest
+            </Styled.GuestLoginButton>
+          </>
         )}
       </Styled.Form>
     </Styled.Container>

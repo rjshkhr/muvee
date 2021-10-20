@@ -23,6 +23,24 @@ const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.text};
     font-family: Montserrat, sans-serif;
     font-weight: 500;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3 {
+    color: ${({ theme }) => theme.text2};
+    font-weight: 600;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
   }
 
   button {

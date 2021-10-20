@@ -6,7 +6,7 @@ import mediaQueries from '../../styles/mediaQueries'
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.body2};
-  border-radius: 0.5em;
+  border-radius: 1em;
   box-shadow: ${({ theme }) => theme.shadow};
   margin: 3em auto;
   max-width: 30em;
@@ -21,7 +21,6 @@ export const Container = styled.div`
 export const Heading = styled.h2`
   color: ${({ theme }) => theme.primary};
   margin-bottom: 1em;
-  font-weight: 600;
   text-align: center;
   text-transform: capitalize;
 `

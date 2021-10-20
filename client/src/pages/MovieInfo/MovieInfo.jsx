@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouteMatch } from 'react-router-dom'
@@ -45,7 +44,7 @@ const MovieInfo = () => {
 
   return (
     <>
-      <Styled.Poster
+      <Styled.MovieImage
         src={`${imgURL}/${movieslist.details?.backdrop_path}`}
         alt={movieslist.details.title}
       />
@@ -89,35 +88,29 @@ const MovieInfo = () => {
         <Styled.Overview>{movieslist.details?.overview}</Styled.Overview>
       </Styled.InfoContainer>
 
-      {movieslist.similar && (
-        <Styled.Test>
-          <Styled.Heading3>Similar movies</Styled.Heading3>
+      {movieslist.similar.length ? (
+        <>
+          <h3>Similar movies</h3>
           <Styled.MovieList>
             {movieslist.similar.map(movie => (
-              <MovieItem key={movie.id} movie={movie} />
-            ))}
-          </Styled.MovieList>
-        </Styled.Test>
-      )}
-
-      {movieslist.recommended && (
-        <>
-          <Styled.Heading3>Recommended movies</Styled.Heading3>
-          <Styled.MovieList>
-            {movieslist.recommended.map(movie => (
-              <MovieItem key={movie.id} movie={movie} />
+              <MovieItem key={movie.id} movieId={movie.id} movie={movie} />
             ))}
           </Styled.MovieList>
         </>
-      )}
+      ) : null}
+
+      {movieslist.recommended.length ? (
+        <>
+          <h3>Recommended movies</h3>
+          <Styled.MovieList>
+            {movieslist.recommended.map(movie => (
+              <MovieItem key={movie.id} movieId={movie.id} movie={movie} />
+            ))}
+          </Styled.MovieList>
+        </>
+      ) : null}
     </>
   )
-}
-
-MovieInfo.propTypes = {
-  movie: PropTypes.shape({
-    title: PropTypes.string.isRequired
-  })
 }
 
 export default MovieInfo

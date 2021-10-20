@@ -25,7 +25,7 @@ export const MoviePaginateContainer = styled.div`
 
     ${mediaQueries('sm')} {
       gap: 0.2em;
-      font-size: 0.8rem;
+      font-size: 0.9rem;
     }
 
     li {

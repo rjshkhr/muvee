@@ -13,7 +13,7 @@ const dialogAnim = keyframes`
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.body2};
-  border-radius: 0.5em;
+  border-radius: 1em;
   box-shadow: ${({ theme }) => theme.shadow};
   padding: 2em;
   position: absolute;
@@ -32,6 +32,7 @@ export const DialogList = styled.ul`
 export const DialogItem = styled.li`
   color: ${({ theme }) => theme.text2};
   cursor: pointer;
+  line-height: 1.1;
 
   &:hover,
   &:focus {
@@ -41,10 +42,10 @@ export const DialogItem = styled.li`
 
 export const DialogLink = styled(Link)`
   align-item: center;
-  color: ${({ theme }) => theme.text2};
+  color: ${({ theme }) => theme.text};
   display: flex;
   gap: 0.5em;
-  margin: 0.5em 0;
+  margin: 0.6em 0;
 
   &:hover,
   &:focus {
@@ -62,7 +63,8 @@ export const DialogButton = styled.button`
   font-weight: inherit;
   display: flex;
   gap: 0.5em;
-  margin: 0.5em 0;
+  margin: 0.6em 0;
+  line-height: 1.1;
 
   &:hover {
     background-color: inherit;

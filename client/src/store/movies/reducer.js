@@ -4,7 +4,7 @@ const initialState = {
   movies: [],
   moviesLoading: false,
   moviesError: false,
-  page: 1,
+  page: null,
   totalPages: null,
   totalResults: null,
   details: null,
@@ -12,7 +12,7 @@ const initialState = {
   detailsError: null,
   reviews: [],
   recommended: [],
-  similar: null
+  similar: []
 }
 
 const moviesReducer = (state = initialState, { type, payload }) => {

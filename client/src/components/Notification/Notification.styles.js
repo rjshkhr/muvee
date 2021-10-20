@@ -24,7 +24,7 @@ export const Container = styled.div`
   z-index: 1;
   background-color: ${({ theme }) => theme.body2};
   box-shadow: ${({ theme }) => theme.shadow};
-  border-radius: 0.4em;
+  border-radius: 1em;
   padding: 1em;
   animation: ${notificationAnim} 0.3s;
 
@@ -46,7 +46,6 @@ export const Container = styled.div`
 
 export const Text = styled.p`
   flex-basis: 90%;
-  line-height: 1.6;
 
   ${mediaQueries('sm')} {
     font-size: 0.9rem;

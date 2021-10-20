@@ -5,7 +5,7 @@ import { MdAccessTimeFilled } from 'react-icons/md'
 
 import mediaQueries from '../../styles/mediaQueries'
 
-export const Poster = styled.img`
+export const MovieImage = styled.img`
   box-shadow: ${({ theme }) => theme.shadow};
 `
 
@@ -19,7 +19,7 @@ export const InfoContainer = styled.div`
   align-items: center;
   padding: 3em;
   width: 50em;
-  margin: 0 auto;
+  margin: 0 auto -10em auto;
   transform: translateY(-50%);
 
   ${mediaQueries('lg')} {
@@ -33,9 +33,6 @@ export const InfoContainer = styled.div`
 `
 
 export const Title = styled.h2`
-  color: ${({ theme }) => theme.text2};
-  font-size: 1.8rem;
-  font-weight: 600;
   text-align: center;
   text-transform: uppercase;
 `
@@ -139,23 +136,10 @@ export const Overview = styled.p`
   line-height: 1.8;
 `
 
-export const Test = styled.div`
-  margin-top: -10em;
-
-  ${mediaQueries('lg')} {
-    margin-top: 3em;
-  }
-`
-
-export const Heading3 = styled.h3`
-  font-weight: 600;
-  font-size: 1.5rem;
-`
-
 export const MovieList = styled.div`
   display: flex;
   gap: 1em;
-  padding: 1em 0;
+  padding: 1.5em 0;
   margin-bottom: 2em;
   overflow-x: auto;
   -ms-overflow-style: none;

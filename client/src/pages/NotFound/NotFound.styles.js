@@ -8,6 +8,5 @@ export const Container = styled.div`
   height: calc(100vh - 8em);
 `
 export const Text = styled.h2`
-  font-weight: 600;
   margin-bottom: 0.5em;
 `

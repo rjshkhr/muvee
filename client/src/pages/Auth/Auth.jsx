@@ -89,23 +89,22 @@ const Auth = ({ label }) => {
           {label}
         </Button>
 
+        <Styled.GuestLoginButton
+          onClick={handleGuestLogin}
+          fullWidth
+          noBackground
+        >
+          Guest Login
+        </Styled.GuestLoginButton>
+
         {label === 'register' ? (
           <Styled.Text>
             Already have an account? <Link to='/login'>Log In</Link>
           </Styled.Text>
         ) : (
-          <>
-            <Styled.Text>
-              Don&apos;t have an account? <Link to='/register'>Register</Link>
-            </Styled.Text>
-            <Styled.GuestLoginButton
-              onClick={handleGuestLogin}
-              fullWidth
-              noBackground
-            >
-              Or log in as Guest
-            </Styled.GuestLoginButton>
-          </>
+          <Styled.Text>
+            Don&apos;t have an account? <Link to='/register'>Register</Link>
+          </Styled.Text>
         )}
       </Styled.Form>
     </Styled.Container>

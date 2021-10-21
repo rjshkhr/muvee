@@ -32,8 +32,6 @@ const MovieInfo = () => {
     dispatch(getRecommendedAction(movieId))
   }, [dispatch, movieId])
 
-  console.log(movieslist)
-
   if (movieslist.detailsLoading) return <Loading />
 
   if (movieslist.detailsError) {

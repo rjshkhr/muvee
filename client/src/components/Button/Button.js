@@ -27,9 +27,9 @@ const Button = styled.button`
   }
 
   &:active {
-  background-color: ${({ theme }) => theme.primary};
-  background-size: 100%;
-  transition: background 0s;
+    background-color: ${({ theme }) => theme.primary};
+    background-size: 100%;
+    transition: background 0s;
   }
 `
 

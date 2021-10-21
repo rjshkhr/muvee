@@ -49,16 +49,17 @@ export const ImageSkeleton = styled.div`
 export const IconsContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-top: 0.8em;
 `
 
 export const Rating = styled.div`
   align-items: center;
   background-color: ${({ theme }) => theme.yellowBody};
-  border-radius: 1em;
+  border-radius: 1.5em;
   display: inline-flex;
   justify-content: center;
-  padding: 0.1em 0.5em;
+  padding: 0.3em 0.8em;
 `
 
 export const RatingText = styled.div`
@@ -77,11 +78,17 @@ export const StarIcon = styled(FaStar)`
 
 const playlistIcon = css`
   font-size: 1.5rem;
+  background: none;
 `
 
 export const PlaylistIconButton = styled.button`
+  border-radius: 50%;
+  width: 3em;
+  height: 3em;
+
   &:hover,
   &:focus {
+    background-color: ${({ theme }) => theme.primary3};
     color: ${({ theme }) => theme.primary};
   }
 `

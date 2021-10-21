@@ -15,7 +15,7 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.body2};
   border-radius: 1em;
   box-shadow: ${({ theme }) => theme.shadow};
-  padding: 2em;
+  padding: 2em 1.5em;
   position: absolute;
   right: 0;
   top: 6em;
@@ -38,6 +38,10 @@ export const DialogItem = styled.li`
   &:focus {
     color: ${({ theme }) => theme.primary};
   }
+
+  svg {
+    background: none;
+  }
 `
 
 export const DialogLink = styled(Link)`
@@ -45,10 +49,13 @@ export const DialogLink = styled(Link)`
   color: ${({ theme }) => theme.text};
   display: flex;
   gap: 0.5em;
-  margin: 0.6em 0;
+  padding: 0.5em;
+  margin: 0.2em 0;
+  width: 100%;
 
   &:hover,
   &:focus {
+    background-color: ${({theme}) => theme.primary3};
     color: inherit;
   }
 
@@ -58,16 +65,19 @@ export const DialogLink = styled(Link)`
 `
 
 export const DialogButton = styled.button`
+  color: ${({ theme }) => theme.text};
+  width: 100%;
   align-item: center;
   font-size: inherit;
   font-weight: inherit;
   display: flex;
   gap: 0.5em;
-  margin: 0.6em 0;
+  padding: 0.5em;
+  margin: 0.2em 0;
   line-height: 1.1;
 
   &:hover {
-    background-color: inherit;
+    background-color: ${({theme}) => theme.primary3};
     color: inherit;
   }
 `

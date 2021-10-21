@@ -14,7 +14,6 @@ export const Nav = styled.nav`
 
 export const NavList = styled.ul`
   ${center}
-  margin-right: 1em;
 
   ${mediaQueries('md')} {
     background-color: ${({ theme }) => theme.body2};
@@ -64,10 +63,20 @@ export const Link = styled(NavLink)`
 export const ThemeToggleButton = styled.button`
   ${center}
   font-size: 1.5rem;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
 
   &:hover,
   &:focus {
+    background-color: ${({ theme }) => theme.primary3};
     color: ${({ theme }) => theme.primary};
+  }
+
+  svg {
+    background: none;
   }
 `
 

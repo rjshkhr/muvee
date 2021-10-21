@@ -55,7 +55,7 @@ export const DialogLink = styled(Link)`
 
   &:hover,
   &:focus {
-    background-color: ${({theme}) => theme.primary3};
+    background-color: ${({ theme }) => theme.primary3};
     color: inherit;
   }
 
@@ -77,7 +77,7 @@ export const DialogButton = styled.button`
   line-height: 1.1;
 
   &:hover {
-    background-color: ${({theme}) => theme.primary3};
+    background-color: ${({ theme }) => theme.primary3};
     color: inherit;
   }
 `

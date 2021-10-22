@@ -2,7 +2,9 @@ import styled from 'styled-components'
 
 const Button = styled.button`
   background-color: ${({ noBackground }) =>
-    noBackground ? props => props.theme.primary3 : props => props.theme.primary}};
+    noBackground
+      ? props => props.theme.primary3
+      : props => props.theme.primary}};
 
   background-position: center;
   border-radius: 0.5em;

@@ -27,7 +27,7 @@ export const darkTheme = {
   border: '#556',
   primary: '#4680f6',
   primary2: '#528bff',
-  primary3: 'rgba(78, 108, 246, 0.07)',
+  primary3: 'rgba(25, 25, 40, 0.3)',
   errorText: '#ff4662',
   errorBody: 'rgba(185, 65, 65, 0.1)',
   yellowText: '#e7d645',

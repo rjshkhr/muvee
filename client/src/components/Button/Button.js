@@ -2,13 +2,13 @@ import styled from 'styled-components'
 
 const Button = styled.button`
   background-color: ${({ noBackground }) =>
-    noBackground ? 'inherit' : props => props.theme.primary}};
+    noBackground ? props => props.theme.primary3 : props => props.theme.primary}};
 
   background-position: center;
   border-radius: 0.5em;
 
   color: ${({ noBackground }) =>
-    noBackground ? props => props.theme.text : '#fff'}};
+    noBackground ? props => props.theme.primary : '#fff'}};
 
   font-weight: 600;
   padding: 1em 1.5em;

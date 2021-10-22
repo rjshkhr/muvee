@@ -12,7 +12,7 @@ const center = css`
 export const MovieTypeContainer = styled.div`
   ${center}
   margin: 2em 0;
-  gap: 0.2em;
+  gap: 0.4em;
   flex-wrap: wrap;
 `
 

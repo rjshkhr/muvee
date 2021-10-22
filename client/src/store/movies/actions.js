@@ -47,20 +47,6 @@ export const getDetailsActions = movieId => {
   }
 }
 
-export const getReviewsAction = movieId => {
-  return async dispatch => {
-    try {
-      const { data } = await movieService.getReviews(movieId)
-      dispatch({
-        type: types.SET_REVIEWS,
-        payload: data.results
-      })
-    } catch (err) {
-      dispatch(setNotificationAction('Could not fetch movie reviews', 'error'))
-    }
-  }
-}
-
 export const getRecommendedAction = movieId => {
   return async dispatch => {
     try {

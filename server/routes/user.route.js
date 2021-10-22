@@ -3,11 +3,9 @@ import { Router } from 'express'
 import userController from '../controllers/user.controller.js'
 import validateRequest from '../middlewares/validate-request.js'
 import userValidator from '../validators/user.validator.js'
-import { verifyToken, verifyRefreshToken } from '../middlewares/auth.js'
+import { verifyRefreshToken } from '../middlewares/auth.js'
 
 const router = Router()
-
-router.get('/profile/:id', verifyToken, userController.getOne)
 
 router.post(
   '/register',

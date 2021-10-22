@@ -2,8 +2,6 @@ export const SET_MOVIES = 'SET_MOVIES'
 
 export const SET_DETAILS = 'SET_DETAILS'
 
-export const SET_REVIEWS = 'SET_REVIEWS'
-
 export const SET_RECOMMENDED = 'SET_RECOMMENDED'
 
 export const SET_SIMILAR = 'SET_SIMILAR'

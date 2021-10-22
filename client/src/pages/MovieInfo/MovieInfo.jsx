@@ -8,7 +8,6 @@ import NotFound from '../NotFound'
 
 import {
   getDetailsActions,
-  getReviewsAction,
   getSimilarAction,
   getRecommendedAction
 } from '../../store/movies/actions'
@@ -29,7 +28,6 @@ const MovieInfo = () => {
 
   useEffect(() => {
     dispatch(getDetailsActions(movieId))
-    dispatch(getReviewsAction(movieId))
     dispatch(getSimilarAction(movieId))
     dispatch(getRecommendedAction(movieId))
   }, [dispatch, movieId])

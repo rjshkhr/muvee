@@ -10,7 +10,6 @@ const initialState = {
   details: null,
   detailsLoading: false,
   detailsError: null,
-  reviews: [],
   recommended: [],
   similar: []
 }
@@ -44,9 +43,6 @@ const moviesReducer = (state = initialState, { type, payload }) => {
 
     case types.SET_DETAILS_ERROR:
       return { ...state, detailsLoading: false, detailsError: true }
-
-    case types.SET_REVIEWS:
-      return { ...state, reviews: payload }
 
     case types.SET_RECOMMENDED:
       return { ...state, recommended: payload }

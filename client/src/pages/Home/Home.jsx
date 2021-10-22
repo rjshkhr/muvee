@@ -22,11 +22,8 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getMoviesAction(movieType, 1))
-  }, [dispatch, movieType])
-
-  useEffect(() => {
     dispatch(getWatchlistAction())
-  }, [dispatch])
+  }, [dispatch, movieType])
 
   const handlePageChange = ({ selected }) => {
     dispatch(getMoviesAction(movieType, selected + 1))

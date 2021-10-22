@@ -1,9 +1,32 @@
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import { FaStar } from 'react-icons/fa'
 import { BiCalendar } from 'react-icons/bi'
 import { MdAccessTimeFilled } from 'react-icons/md'
 
 import mediaQueries from '../../styles/mediaQueries'
+
+export const skeleton = keyframes`
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.6;
+  }
+`
+
+export const ImageSkeleton = styled.div`
+  background-color: ${({ theme }) => theme.body2};
+  animation: ${skeleton} 0.8s ease infinite alternate;
+  border-radius: 1em;
+  display: ${({ imgLoading }) => (imgLoading ? 'block' : 'none')};
+  width: 100%;
+  height: 375px;
+
+  ${mediaQueries('lg')} {
+    display: none;
+  }
+`
 
 export const MovieImage = styled.img`
   box-shadow: ${({ theme }) => theme.shadow};

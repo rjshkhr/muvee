@@ -20,7 +20,6 @@
   },
   "plugins": ["react", "jest", "cypress"],
   "rules": {
-    "no-console": "off",
     "react/react-in-jsx-scope": "off"
   },
   "settings": {

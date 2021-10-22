@@ -18,8 +18,6 @@ export const getNewToken = async () => {
     const res = await axios.post('/api/users/refresh', { refreshToken })
     return res.data
   } catch (err) {
-    console.log(err)
-
     if (err?.response?.status === 403) {
       LS.remove('user')
       LS.remove('token')

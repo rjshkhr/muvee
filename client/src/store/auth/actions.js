@@ -20,8 +20,6 @@ export const loginAction = credentials => {
 
       dispatch(setNotificationAction(`Welcome ${data.user.name}`, 'info'))
     } catch (err) {
-      console.error(err)
-
       dispatch({
         type: types.SET_USER_ERROR,
         payload: err?.response?.data?.message
@@ -47,8 +45,6 @@ export const registerAction = credentials => {
 
       dispatch(setNotificationAction(`Welcome ${data.user.name}`, 'info'))
     } catch (err) {
-      console.error(err)
-
       dispatch({
         type: types.SET_USER_ERROR,
         payload: err?.response?.data?.message
@@ -76,7 +72,6 @@ export const logoutAction = () => {
       LS.remove('token')
       LS.remove('refreshToken')
     } catch (err) {
-      console.error(err)
       dispatch(setNotificationAction('Something went wrong!', 'error'))
 
       dispatch({

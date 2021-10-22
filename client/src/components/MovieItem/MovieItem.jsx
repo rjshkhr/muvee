@@ -45,7 +45,7 @@ const MovieItem = ({ movieId, movie }) => {
 
   return (
     <Styled.Container>
-      <Link to={`/movie/${movieId}`}>
+      <Link to={`/movie/${movieId}`} title={movie.title}>
         <Styled.ImageSkeleton imgLoading={imgLoading} />
         <div style={{ display: imgLoading ? 'none' : 'block' }}>
           <img

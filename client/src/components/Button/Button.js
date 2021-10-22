@@ -4,7 +4,7 @@ const Button = styled.button`
   background-color: ${({ noBackground }) =>
     noBackground
       ? props => props.theme.primary3
-      : props => props.theme.primary}};
+      : props => props.theme.primary2}};
 
   background-position: center;
   border-radius: 0.5em;
@@ -24,12 +24,12 @@ const Button = styled.button`
   &:focus {
     color: #fff;
     background: ${({ theme }) =>
-      theme.primary2} radial-gradient(circle, transparent 1%, ${({ theme }) =>
-  theme.primary2} 1%) center/15000%;
+      theme.primary} radial-gradient(circle, transparent 1%, ${({ theme }) =>
+  theme.primary} 1%) center/15000%;
   }
 
   &:active {
-    background-color: ${({ theme }) => theme.primary};
+    background-color: ${({ theme }) => theme.primary2};
     background-size: 100%;
     transition: background 0s;
   }

@@ -50,7 +50,7 @@ export const IconsContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 0.8em;
+  margin-top: 0.3em;
 `
 
 export const Rating = styled.div`
@@ -83,8 +83,11 @@ const playlistIcon = css`
 
 export const PlaylistIconButton = styled.button`
   border-radius: 50%;
-  width: 3em;
-  height: 3em;
+  width: 3.3em;
+  height: 3.3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:hover,
   &:focus {

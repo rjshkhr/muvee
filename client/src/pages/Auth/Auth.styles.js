@@ -88,9 +88,5 @@ export const Error = styled.p`
 `
 
 export const GuestLoginButton = styled(Button)`
-  background-color: ${({ theme }) => theme.primary3};
-  color: ${({ theme }) => theme.primary};
   margin-top: 1.5em;
-  text-transform: initial;
-  font-weight: 500;
 `

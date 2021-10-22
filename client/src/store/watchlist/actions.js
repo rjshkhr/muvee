@@ -13,8 +13,7 @@ export const getWatchlistAction = () => {
         payload: data
       })
     } catch (err) {
-      console.error(err)
-
+      setNotificationAction('Could not fetch watchlist', 'error')
       dispatch({
         type: types.SET_WATCHLIST_ERROR,
         payload: err?.response?.data?.message || true
@@ -35,7 +34,6 @@ export const addWatchlistAction = movie => {
 
       dispatch(setNotificationAction(`${movie.title} added to the watchlist`))
     } catch (err) {
-      console.error(err)
       dispatch(
         setNotificationAction(
           `Could not add ${movie.title} to the watchlist`,
@@ -66,7 +64,6 @@ export const removeWatchlistAction = movie => {
           'error'
         )
       )
-      console.error(err)
     }
   }
 }

@@ -1,5 +1,6 @@
 import * as types from './constants'
 import * as movieService from './services'
+import { setNotificationAction } from '../notification/actions'
 
 export const getMoviesAction = (type, page) => {
   return async dispatch => {
@@ -17,8 +18,7 @@ export const getMoviesAction = (type, page) => {
         }
       })
     } catch (err) {
-      console.error(err)
-
+      dispatch(setNotificationAction('Could not fetch movies', 'error'))
       dispatch({
         type: types.SET_MOVIES_ERROR,
         payload: err?.response?.data?.message || true
@@ -38,8 +38,7 @@ export const getDetailsActions = movieId => {
         payload: data
       })
     } catch (err) {
-      console.error(err)
-
+      dispatch(setNotificationAction('Could not fetch movie details', 'error'))
       dispatch({
         type: types.SET_DETAILS_ERROR,
         payload: err?.response?.data?.message || true
@@ -57,7 +56,7 @@ export const getReviewsAction = movieId => {
         payload: data.results
       })
     } catch (err) {
-      console.error(err)
+      dispatch(setNotificationAction('Could not fetch movie reviews', 'error'))
     }
   }
 }
@@ -71,7 +70,9 @@ export const getRecommendedAction = movieId => {
         payload: data.results
       })
     } catch (err) {
-      console.error(err)
+      dispatch(
+        setNotificationAction('Could not fetch recommended movies', 'error')
+      )
     }
   }
 }
@@ -85,7 +86,7 @@ export const getSimilarAction = movieId => {
         payload: data.results
       })
     } catch (err) {
-      console.error(err)
+      dispatch(setNotificationAction('Could not fetch similar movies', 'error'))
     }
   }
 }

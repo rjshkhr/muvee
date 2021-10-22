@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouteMatch } from 'react-router-dom'
 
@@ -18,6 +18,8 @@ const imgURL = 'https://image.tmdb.org/t/p/original'
 
 const MovieInfo = () => {
   const movieslist = useSelector(({ movieslist }) => movieslist)
+
+  const [imgLoading, setImgLoading] = useState(true)
 
   const {
     params: { movieId }
@@ -42,10 +44,14 @@ const MovieInfo = () => {
 
   return (
     <>
-      <Styled.MovieImage
-        src={`${imgURL}/${movieslist.details?.backdrop_path}`}
-        alt={movieslist.details.title}
-      />
+      <Styled.ImageSkeleton imgLoading={imgLoading} />
+      <div style={{ display: imgLoading ? 'none' : 'block' }}>
+        <Styled.MovieImage
+          src={`${imgURL}/${movieslist.details?.backdrop_path}`}
+          alt={movieslist.details.title}
+          onLoad={() => setImgLoading(false)}
+        />
+      </div>
       <Styled.InfoContainer>
         <Styled.Title>{movieslist.details.title}</Styled.Title>
 

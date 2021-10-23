@@ -42,6 +42,7 @@ export const InfoContainer = styled.div`
   align-items: center;
   padding: 3em;
   width: 50em;
+  min-height: 28em;
   margin: 0 auto -10em auto;
   transform: translateY(-50%);
 
@@ -51,7 +52,8 @@ export const InfoContainer = styled.div`
     background-color: initial;
     box-shadow: none;
     padding: 0;
-    margin: 2em auto;
+    min-height: auto;
+    margin: 3em auto 4em auto;
   }
 `
 

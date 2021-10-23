@@ -6,6 +6,7 @@ import mediaQueries from '../../styles/mediaQueries'
 const center = css`
   display: flex;
   align-items: center;
+  justify-content: center;
 `
 
 export const Nav = styled.nav`
@@ -34,11 +35,24 @@ export const NavList = styled.ul`
 
 export const NavListToggleButton = styled.button`
   display: none;
+  font-size: 1.5rem;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
 
   ${mediaQueries('md')} {
     ${center}
-    font-size: 1.5rem;
-    margin-left: 0.5em;
+    margin-left: 0.1em;
+  }
+
+  &.selected,
+  &:hover {
+    background-color: ${({ theme }) => theme.primary3};
+    color: ${({ theme }) => theme.primary};
+  }
+
+  svg {
+    background: none;
   }
 `
 

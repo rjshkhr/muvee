@@ -22,11 +22,7 @@ export const Input = styled.input`
   }
 
   ${mediaQueries('sm')} {
-    width: 12em;
-  }
-
-  ${mediaQueries('xs')} {
-    width: 6em;
+    width: 11em;
   }
 `
 

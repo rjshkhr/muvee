@@ -9,4 +9,5 @@ export const Container = styled.div`
 `
 export const Text = styled.h2`
   margin-bottom: 0.5em;
+  text-align: center;
 `

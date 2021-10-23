@@ -82,6 +82,7 @@ export const Error = styled.p`
   display: flex;
   font-size: 0.9rem;
   line-height: 2;
+  padding: 0 0.5em;
   justify-content: center;
   margin-bottom: 2em;
   text-align: center;

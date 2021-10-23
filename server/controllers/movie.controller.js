@@ -71,21 +71,23 @@ const getSimilar = async (req, res, next) => {
   }
 }
 
-const getReviews = async (req, res, next) => {
-  try {
-    const movies = await getMovies('reviews', req.query.page, req.params.id)
-    res.json({ data: movies })
-  } catch (err) {
-    next(err)
-  }
-}
-
 const getDetails = async (req, res, next) => {
   try {
     const movieDetails = await axios.get(
       `${baseUrl}/${req.params.id}?api_key=${config.TMDB_API_KEY}&language=en-US`
     )
     res.json({ data: movieDetails.data })
+  } catch (err) {
+    next(err)
+  }
+}
+
+const getMoviesByQuery = async (req, res, next) => {
+  try {
+    const movies = await axios.get(
+      `https://api.themoviedb.org/3/search/movie?api_key=${config.TMDB_API_KEY}&language=en-US&query=${req.params.query}`
+    )
+    res.json({ data: movies.data })
   } catch (err) {
     next(err)
   }
@@ -98,6 +100,6 @@ export default {
   getUpcoming,
   getRecommended,
   getSimilar,
-  getReviews,
-  getDetails
+  getDetails,
+  getMoviesByQuery
 }

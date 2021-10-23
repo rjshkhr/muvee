@@ -5,6 +5,7 @@ import { MdClose, MdDarkMode, MdLightMode, MdMenu } from 'react-icons/md'
 import { BiUser } from 'react-icons/bi'
 
 import Dialog from './Dialog'
+import Search from './Search'
 
 import * as Styled from './Navbar.styles'
 import useClickOutside from '../../hooks/useClickOutside'
@@ -38,6 +39,7 @@ const Navbar = ({ theme, toggleTheme }) => {
     <Styled.Nav>
       {user ? (
         <>
+          <Search />
           <Styled.ProfileIconButton
             onClick={toggleDialog}
             ref={profileRef}

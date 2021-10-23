@@ -18,4 +18,6 @@ router.get('/:id/similar', movieController.getSimilar)
 
 router.get('/:id/details', movieController.getDetails)
 
+router.post('/search/:query', movieController.getMoviesByQuery)
+
 export default router

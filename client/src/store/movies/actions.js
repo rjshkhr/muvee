@@ -76,3 +76,23 @@ export const getSimilarAction = movieId => {
     }
   }
 }
+
+export const getMoviesByQueryAction = query => {
+  return async dispatch => {
+    try {
+      dispatch({ type: types.SET_SEARCH_LOADING })
+      const { data } = await movieService.getMoviesByQuery(query)
+
+      dispatch({
+        type: types.SET_SEARCH,
+        payload: data.results
+      })
+    } catch (err) {
+      dispatch(setNotificationAction('Could not find movie', 'error'))
+      dispatch({
+        type: types.SET_SEARCH_ERROR,
+        payload: err?.response?.data?.message || true
+      })
+    }
+  }
+}

@@ -10,6 +10,7 @@ import Auth from './pages/Auth'
 import Watchlist from './pages/Watchlist'
 import MovieInfo from './pages/MovieInfo'
 import UserInfo from './pages/UserInfo'
+import MovieSearch from './pages/MovieSearch'
 
 import FontStyles from './styles/FontStyles'
 import GlobalStyles from './styles/GlobalStyles'
@@ -51,6 +52,10 @@ const App = () => {
 
             <Route exact path='/movie/:movieId'>
               {user ? <MovieInfo /> : <Redirect to='/login' />}
+            </Route>
+
+            <Route exact path='/search/:query'>
+              {user ? <MovieSearch /> : <Redirect to='/login' />}
             </Route>
 
             <Route exact path='/user/:userId'>

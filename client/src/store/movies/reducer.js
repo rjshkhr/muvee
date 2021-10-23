@@ -11,7 +11,10 @@ const initialState = {
   detailsLoading: false,
   detailsError: null,
   recommended: [],
-  similar: []
+  similar: [],
+  search: [],
+  searchLoading: false,
+  searchError: null
 }
 
 const moviesReducer = (state = initialState, { type, payload }) => {
@@ -49,6 +52,20 @@ const moviesReducer = (state = initialState, { type, payload }) => {
 
     case types.SET_SIMILAR:
       return { ...state, similar: payload }
+
+    case types.SET_SEARCH:
+      return {
+        ...state,
+        searchLoading: false,
+        searchError: null,
+        search: payload
+      }
+
+    case types.SET_SEARCH_LOADING:
+      return { ...state, searchLoading: true }
+
+    case types.SET_SEARCH_ERROR:
+      return { ...state, searchLoading: false, searchError: true }
 
     default:
       return state

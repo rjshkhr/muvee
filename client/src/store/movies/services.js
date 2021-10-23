@@ -24,3 +24,8 @@ export const getRecommended = async movieId => {
   const res = await axios.get(`/api/movies/${movieId}/recommended`)
   return res.data
 }
+
+export const getMoviesByQuery = async query => {
+  const res = await axios.post(`/api/movies/search/${query}`)
+  return res.data
+}

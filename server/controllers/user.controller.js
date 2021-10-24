@@ -96,7 +96,18 @@ const regenerateToken = async (req, res, next) => {
 
 const deleteAccount = async (req, res, next) => {
   try {
+    const userToDelete = await userService.getUserById(req.params.id)
+
+    if (!userToDelete) {
+      throw new HttpError(404, 'user not found')
+    }
+
+    if (userToDelete.id !== req.userId) {
+      throw new HttpError(403, 'token invalid')
+    }
+
     userService.deleteUser(req.params.id)
+
     res.json({ message: 'account deleted' })
   } catch (err) {
     next(err)

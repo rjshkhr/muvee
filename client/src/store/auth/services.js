@@ -61,5 +61,5 @@ export const logout = async () => {
 }
 
 export const deleteAccount = async userId => {
-  await axios.delete(`/api/users/${userId}`)
+  await requiresToken.delete(`/api/users/${userId}`, setAuthHeader())
 }

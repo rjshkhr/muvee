@@ -81,3 +81,30 @@ export const logoutAction = () => {
     }
   }
 }
+
+export const deleteAccountAction = userId => {
+  return async dispatch => {
+    try {
+      dispatch({ type: types.SET_USER_LOADING })
+      await authService.deleteAccount(userId)
+
+      dispatch({
+        type: types.SET_USER,
+        payload: null
+      })
+
+      LS.remove('user')
+      LS.remove('token')
+      LS.remove('refreshToken')
+
+      dispatch(setNotificationAction('Account deleted', 'info'))
+    } catch (err) {
+      dispatch(setNotificationAction('Something went wrong!', 'error'))
+
+      dispatch({
+        type: types.SET_USER_ERROR,
+        payload: true
+      })
+    }
+  }
+}

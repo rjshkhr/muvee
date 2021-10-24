@@ -94,10 +94,20 @@ const regenerateToken = async (req, res, next) => {
   }
 }
 
+const deleteAccount = async (req, res, next) => {
+  try {
+    userService.deleteUser(req.params.id)
+    res.json({ message: 'account deleted' })
+  } catch (err) {
+    next(err)
+  }
+}
+
 export default {
   getOne,
   register,
   login,
   logout,
-  regenerateToken
+  regenerateToken,
+  deleteAccount
 }

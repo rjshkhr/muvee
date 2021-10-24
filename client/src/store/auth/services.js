@@ -59,3 +59,7 @@ export const register = async credentials => {
 export const logout = async () => {
   await axios.delete('/api/users/logout')
 }
+
+export const deleteAccount = async userId => {
+  await axios.delete(`/api/users/${userId}`)
+}

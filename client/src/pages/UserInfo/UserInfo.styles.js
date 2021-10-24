@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import Button from '../../components/Button'
+
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.body2};
   box-shadow: ${({ theme }) => theme.shadow};
@@ -17,4 +19,13 @@ export const Label = styled.p`
 export const Text = styled.p`
   color: ${({ theme }) => theme.text2};
   margin-bottom: 1em;
+`
+
+export const DeleteButton = styled(Button)`
+  background-color: ${({ theme }) => theme.errorBody};
+  color: ${({ theme }) => theme.errorText};
+
+  &:hover {
+    background-color: ${({ theme }) => theme.errorText};
+  }
 `

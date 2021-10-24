@@ -38,6 +38,8 @@ const removeRefreshToken = async id => {
   await redisClient.del(id)
 }
 
+const deleteUser = async id => await User.findByIdAndDelete(id)
+
 export default {
   getAllUsers,
   getUserById,
@@ -47,5 +49,6 @@ export default {
   validatePassowrd,
   signToken,
   signRefreshToken,
-  removeRefreshToken
+  removeRefreshToken,
+  deleteUser
 }

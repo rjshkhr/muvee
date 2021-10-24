@@ -23,4 +23,6 @@ router.delete('/logout', userController.logout)
 
 router.post('/refresh', verifyRefreshToken, userController.regenerateToken)
 
+router.delete('/:id', userController.deleteAccount)
+
 export default router

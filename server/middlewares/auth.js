@@ -2,7 +2,6 @@ import jwt from 'jsonwebtoken'
 
 import config from '../utils/config.js'
 import HttpError from '../utils/http-error.js'
-import redisClient from '../utils/connect-redis.js'
 
 const verifyToken = async (req, _res, next) => {
   const authorization = req.get('authorization')
@@ -29,13 +28,6 @@ const verifyRefreshToken = async (req, _res, next) => {
 
     const { id } = jwt.verify(refreshToken, config.REFRESH_TOKEN_SECRET)
     req.userId = id
-
-    const tokenInRedis = await redisClient.get(id)
-
-    if (!(tokenInRedis && tokenInRedis === refreshToken)) {
-      throw new HttpError(403, 'invalid token')
-    }
-
     next()
   } catch (err) {
     next(err)

@@ -8,7 +8,6 @@ const {
   TOKEN_LIFE,
   REFRESH_TOKEN_SECRET,
   REFRESH_TOKEN_LIFE,
-  REDIS_URI,
   TMDB_API_KEY
 } = process.env
 
@@ -24,6 +23,5 @@ export default {
   TOKEN_LIFE,
   REFRESH_TOKEN_SECRET,
   REFRESH_TOKEN_LIFE,
-  REDIS_URI,
   TMDB_API_KEY
 }

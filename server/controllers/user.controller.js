@@ -75,9 +75,8 @@ const login = async (req, res, next) => {
   }
 }
 
-const logout = async (req, res, next) => {
+const logout = async (_req, res, next) => {
   try {
-    await userService.removeRefreshToken(req.userId)
     res.json({ message: 'user logged out' })
   } catch (err) {
     next(err)

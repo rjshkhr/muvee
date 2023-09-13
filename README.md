@@ -4,7 +4,7 @@ A movie tracking app
 
 ## Demo
 
-[See Live](https://muvee.herokuapp.com)
+[See Live](https://muvee.onrender.com)
 
 ## Features
 

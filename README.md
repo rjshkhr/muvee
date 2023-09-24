@@ -25,7 +25,7 @@ A movie tracking app.
 - [Styled Components](https://styled-components.com/)
 - [Webpack](https://webpack.js.org/)
 
-### Server -
+### Server-side:
 
 - [Node.js](https://nodejs.org/en/)
 - [Express.js](https://expressjs.com/)
@@ -38,4 +38,4 @@ A movie tracking app.
 
 ## License
 
-Muvee is licensed under the [MIT License](https://choosealicense.com/licenses/mit/)
+Muvee is licensed under the [MIT License](https://choosealicense.com/licenses/mit/).

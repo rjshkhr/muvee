@@ -1,31 +1,28 @@
 # Muvee
 
-A movie tracking app
+A movie tracking app.
 
 ## Demo
 
-[See Live](https://muvee.onrender.com)
+[See Live](https://muvee.herokuapp.com)
 
 ## Features
 
-- Log in, log out, create and delete account
+- User account management (login, logout, create, and delete accounts)
 - List popular, top rated, now playing and upcoming movies
-- Search movies
-- Add movies to the watchlist
-- Movie details and profile pages
-- Light and dark theme
+- Movie search functionality
+- Watchlist management for adding and removing movies
+- Detailed movie information and user profiles
+- Light and dark themes
 
 ## Tech Stack
 
-### Client -
+### Client-side:
 
-- [React.js](https://reactjs.org/)
+- [React](https://reactjs.org/)
 - [Redux](https://redux.js.org/)
 - [React Router](https://reactrouter.com/)
 - [Styled Components](https://styled-components.com/)
-- [Jest](https://jestjs.io/)
-- [React Testing Library](https://testing-library.com/)
-- [Cypress](https://www.cypress.io/)
 - [Webpack](https://webpack.js.org/)
 
 ### Server -
@@ -35,11 +32,10 @@ A movie tracking app
 - [TMDB](https://developers.themoviedb.org/3)
 - [MongoDB](https://www.mongodb.com/)
 - [Mongoose](https://mongoosejs.com/)
-- [ioredis](https://www.npmjs.com/package/ioredis)
 - [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
 - [Jest](https://jestjs.io/)
 - [Supertest](https://www.npmjs.com/package/supertest)
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+Muvee is licensed under the [MIT License](https://choosealicense.com/licenses/mit/)

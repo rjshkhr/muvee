@@ -18,12 +18,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rajshekhar26/muvee.git"
+    "url": "git+https://github.com/rjshkhr/muvee.git"
   },
   "author": "Raj Shekhar <rjshekhar.official@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rajshekhar26/muvee/issues"
+    "url": "https://github.com/rjshkhr/muvee/issues"
   },
   "devDependencies": {
     "eslint": "^7.32.0",
